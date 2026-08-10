@@ -382,3 +382,190 @@ function toggleMilestone(
 
     openGoalDetails(goalId);
 }
+
+function renderGoalActivities(goal) {
+
+    const activities =
+        goal.activities || [];
+
+
+    return `
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Attività
+                    </div>
+
+                    <div class="card-subtitle">
+                        Registra ciò che fai ogni giorno
+                    </div>
+
+                </div>
+
+                <button
+                    class="small-button"
+                    onclick="addGoalActivity('${goal.id}')"
+                >
+                    + Registra
+                </button>
+
+            </div>
+
+
+            <div class="activity-list">
+
+                ${
+                    activities.length
+                        ? activities
+                            .slice()
+                            .reverse()
+                            .slice(0, 8)
+                            .map(
+                                renderGoalActivity
+                            )
+                            .join("")
+                        : `
+                            <div class="empty-state">
+                                <strong>
+                                    Nessuna attività
+                                </strong>
+
+                                Registra il primo passo
+                                verso il tuo obiettivo.
+                            </div>
+                        `
+                }
+
+            </div>
+
+        </section>
+
+    `;
+}
+
+
+function renderGoalActivity(activity) {
+
+    const date =
+        new Date(activity.date);
+
+
+    const dateText =
+        date.toLocaleDateString(
+            "it-IT",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+
+    return `
+
+        <div class="activity-item">
+
+            <div class="activity-dot"></div>
+
+            <div class="activity-content">
+
+                <div class="activity-name">
+                    ${escapeHTML(activity.title)}
+                </div>
+
+                <div class="activity-time">
+
+                    ${activity.duration} min
+
+                    ·
+
+                    ${dateText}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+function addGoalActivity(goalId) {
+
+    const title =
+        prompt(
+            "Cosa hai fatto oggi?"
+        );
+
+
+    if (!title || !title.trim()) {
+        return;
+    }
+
+
+    const durationInput =
+        prompt(
+            "Quanti minuti hai dedicato?"
+        );
+
+
+    const duration =
+        Number(durationInput);
+
+
+    if (
+        !duration ||
+        duration <= 0
+    ) {
+        alert(
+            "Inserisci una durata valida."
+        );
+
+        return;
+    }
+
+
+    const data = loadData();
+
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
+
+
+    if (!goal) return;
+
+
+    if (!goal.activities) {
+        goal.activities = [];
+    }
+
+
+    goal.activities.push({
+
+        id:
+            crypto.randomUUID(),
+
+        title:
+            title.trim(),
+
+        duration,
+
+        date:
+            new Date().toISOString()
+
+    });
+
+
+    updateGoalProgress(goal);
+
+    saveData(data);
+
+    openGoalDetails(goalId);
+}

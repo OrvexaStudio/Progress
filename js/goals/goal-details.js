@@ -193,3 +193,192 @@ function openGoalDetails(goalId) {
 
     `;
 }
+
+function renderMilestones(goal) {
+
+    const milestones =
+        goal.milestones || [];
+
+
+    return `
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Milestone
+                    </div>
+
+                    <div class="card-subtitle">
+                        I passi che ti portano al risultato
+                    </div>
+
+                </div>
+
+                <button
+                    class="small-button"
+                    onclick="addMilestone('${goal.id}')"
+                >
+                    + Aggiungi
+                </button>
+
+            </div>
+
+
+            <div class="milestone-list">
+
+                ${
+                    milestones.length
+                        ? milestones
+                            .map(
+                                milestone =>
+                                    renderMilestone(
+                                        milestone,
+                                        goal.id
+                                    )
+                            )
+                            .join("")
+                        : `
+                            <div class="empty-state">
+                                <strong>
+                                    Nessuna milestone
+                                </strong>
+
+                                Dividi il tuo obiettivo
+                                in piccoli traguardi.
+                            </div>
+                        `
+                }
+
+            </div>
+
+        </section>
+
+    `;
+}
+
+
+function renderMilestone(milestone, goalId) {
+
+    return `
+
+        <div class="milestone-item">
+
+            <button
+                class="
+                    milestone-check
+                    ${milestone.completed ? "completed" : ""}
+                "
+                onclick="
+                    toggleMilestone(
+                        '${goalId}',
+                        '${milestone.id}'
+                    )
+                "
+            >
+                ${milestone.completed ? "✓" : ""}
+            </button>
+
+
+            <div class="milestone-content">
+
+                <strong
+                    class="${milestone.completed ? "done" : ""}"
+                >
+                    ${escapeHTML(milestone.title)}
+                </strong>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+
+function addMilestone(goalId) {
+
+    const title =
+        prompt("Nome della milestone:");
+
+    if (!title || !title.trim()) {
+        return;
+    }
+
+
+    const data = loadData();
+
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
+
+
+    if (!goal) return;
+
+
+    if (!goal.milestones) {
+        goal.milestones = [];
+    }
+
+
+    goal.milestones.push({
+
+        id:
+            crypto.randomUUID(),
+
+        title:
+            title.trim(),
+
+        completed:
+            false
+
+    });
+
+
+    updateGoalProgress(goal);
+
+    saveData(data);
+
+    openGoalDetails(goalId);
+}
+
+
+function toggleMilestone(
+    goalId,
+    milestoneId
+) {
+
+    const data = loadData();
+
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
+
+
+    if (!goal) return;
+
+
+    const milestone =
+        goal.milestones.find(
+            item => item.id === milestoneId
+        );
+
+
+    if (!milestone) return;
+
+
+    milestone.completed =
+        !milestone.completed;
+
+
+    updateGoalProgress(goal);
+
+    saveData(data);
+
+    openGoalDetails(goalId);
+}

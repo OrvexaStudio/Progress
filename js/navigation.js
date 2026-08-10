@@ -59,7 +59,43 @@ function renderPage(page) {
 
         renderDashboard();
         return;
+
     }
+
+
+    if (page === "goals") {
+
+        renderGoalsPage();
+        return;
+
+    }
+
+
+    content.innerHTML = `
+
+        <div class="page placeholder-page">
+
+            <div>
+
+                <div class="placeholder-icon">
+                    ${getPageIcon(page)}
+                </div>
+
+                <h2>
+                    ${pageTitles[page]}
+                </h2>
+
+                <p>
+                    Questa sezione verrà costruita
+                    nel prossimo step.
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+}
 
 
     content.innerHTML = `

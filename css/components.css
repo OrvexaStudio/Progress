@@ -1,0 +1,295 @@
+/* GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 18px;
+}
+
+.dashboard-grid-full {
+    grid-column: 1 / -1;
+}
+
+
+/* CARD */
+
+.card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 24px;
+
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.card-title {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.card-subtitle {
+    margin-top: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+}
+
+
+/* GOAL CARD */
+
+.goal-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.goal-icon {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 14px;
+
+    background: var(--accent-soft);
+
+    font-size: 21px;
+}
+
+.goal-percentage {
+    font-size: 38px;
+    font-weight: 750;
+    letter-spacing: -2px;
+}
+
+.goal-name {
+    margin-top: 20px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.goal-description {
+    margin-top: 6px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+}
+
+
+/* PROGRESS BAR */
+
+.progress-wrapper {
+    margin-top: 24px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: var(--accent-soft);
+}
+
+.progress-value {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: var(--accent);
+
+    transition: width .5s ease;
+}
+
+
+/* STATS */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    margin-top: 22px;
+}
+
+.stat {
+    padding: 14px;
+
+    border-radius: 14px;
+
+    background: var(--surface-soft);
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.stat-label {
+    margin-top: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+
+/* SAVINGS */
+
+.savings-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.savings-current {
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: -1px;
+}
+
+.savings-total {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.savings-meta {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 12px;
+
+    font-size: 11px;
+    color: var(--text-secondary);
+}
+
+
+/* ACTIVITY */
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.activity-item:last-child {
+    border-bottom: 0;
+}
+
+.activity-dot {
+    width: 8px;
+    height: 8px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-name {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.activity-time {
+    margin-top: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+}
+
+
+/* EMPTY */
+
+.empty-state {
+    padding: 45px 20px;
+
+    text-align: center;
+
+    color: var(--text-secondary);
+}
+
+.empty-state strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--text);
+    font-size: 15px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-grid-full {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .card {
+        padding: 19px;
+    }
+
+    .goal-percentage {
+        font-size: 31px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

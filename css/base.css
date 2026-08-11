@@ -41,10 +41,18 @@ html {
 
     color: var(--text);
     background: var(--bg);
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
 }
 
 body {
     min-height: 100vh;
+
+    transition:
+        background-color .25s ease,
+        color .25s ease;
 }
 
 button {
@@ -129,15 +137,4 @@ p {
 
     }
 
-}
-html {
-    transition:
-        background-color .25s ease,
-        color .25s ease;
-}
 
-body {
-    transition:
-        background-color .25s ease,
-        color .25s ease;
-}

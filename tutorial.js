@@ -321,12 +321,42 @@ function createTutorialGoal(){
 
 function finishTutorial(){
 
+
     localStorage.setItem(
         "progress_tutorial_completed",
         "true"
     );
 
 
-    location.reload();
+    const page =
+        document.querySelector(
+            ".tutorial-page"
+        );
+
+
+    if(page){
+
+        page.classList.add(
+            "tutorial-exit"
+        );
+
+    }
+
+
+
+    setTimeout(() => {
+
+
+        initializeNavigation();
+
+        initializeMobileSidebar();
+
+        updateGlobalProfile();
+
+        navigateTo("dashboard");
+
+
+    }, 500);
+
 
 }

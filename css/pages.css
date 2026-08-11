@@ -966,3 +966,50 @@
 .danger-text:hover {
     opacity: .7;
 }
+
+.goal-detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+
+.goal-detail-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+
+.danger-button {
+    border: 1px solid var(--danger);
+    background: transparent;
+    color: var(--danger);
+    padding: 10px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+.danger-button:hover {
+    opacity: .75;
+}
+
+
+@media (max-width: 600px) {
+
+    .goal-detail-header {
+        flex-direction: column;
+    }
+
+    .goal-detail-actions {
+        width: 100%;
+    }
+
+    .goal-detail-actions button {
+        flex: 1;
+    }
+
+}

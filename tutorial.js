@@ -347,17 +347,9 @@ function finishTutorial(){
 
     setTimeout(() => {
 
+    location.reload();
 
-        initializeNavigation();
-
-        initializeMobileSidebar();
-
-        updateGlobalProfile();
-
-        navigateTo("dashboard");
-
-
-    }, 500);
+},500);
 
 
 }

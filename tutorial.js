@@ -304,14 +304,15 @@ function createTutorialGoal(){
     });
 
 
+localStorage.setItem(
+    "progress_data",
+    JSON.stringify(data)
+);
 
-    saveData(data);
 
+tutorialStep = 2;
 
-
-    tutorialStep = 2;
-
-    renderTutorialStep();
+renderTutorialStep();
 
 }
 

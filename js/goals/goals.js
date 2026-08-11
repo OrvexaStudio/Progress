@@ -158,8 +158,25 @@ function openGoalModal(goalId = null) {
         : null;
 
 
-    const container =
-        document.querySelector("#goal-modal-container");
+    let container =
+        document.querySelector(
+            "#goal-modal-container"
+        );
+
+
+    // Se il contenitore non esiste,
+    // lo creiamo automaticamente.
+    if (!container) {
+
+        container =
+            document.createElement("div");
+
+        container.id =
+            "goal-modal-container";
+
+        document.body.appendChild(container);
+
+    }
 
 
     container.innerHTML = `
@@ -183,12 +200,15 @@ function openGoalModal(goalId = null) {
                         </span>
 
                         <h2>
-                            ${goal
-                                ? "Modifica obiettivo"
-                                : "Crea obiettivo"}
+                            ${
+                                goal
+                                    ? "Modifica obiettivo"
+                                    : "Crea obiettivo"
+                            }
                         </h2>
 
                     </div>
+
 
                     <button
                         class="modal-close"
@@ -201,10 +221,16 @@ function openGoalModal(goalId = null) {
 
 
                 <form
-                    onsubmit="saveGoal(event, '${goal?.id || ""}')"
+                    onsubmit="
+                        saveGoal(
+                            event,
+                            '${goal?.id || ""}'
+                        )
+                    "
                 >
 
                     <label>
+
                         Nome obiettivo
 
                         <input
@@ -213,27 +239,31 @@ function openGoalModal(goalId = null) {
                             required
                             maxlength="60"
                             placeholder="Es. Diventare pilota"
-                            value="${goal
-                                ? escapeHTML(goal.title)
-                                : ""}"
+                            value="${escapeHTML(
+                                goal?.title || ""
+                            )}"
                         >
+
                     </label>
 
 
                     <label>
+
                         Descrizione
 
                         <textarea
                             id="goal-description"
                             maxlength="180"
                             placeholder="Cosa vuoi ottenere?"
-                        >${goal
-                            ? escapeHTML(goal.description || "")
-                            : ""}</textarea>
+                        >${escapeHTML(
+                            goal?.description || ""
+                        )}</textarea>
+
                     </label>
 
 
                     <label>
+
                         Icona
 
                         <input
@@ -241,33 +271,38 @@ function openGoalModal(goalId = null) {
                             type="text"
                             maxlength="4"
                             placeholder="🎯"
-                            value="${goal?.icon || "🎯"}"
+                            value="${escapeHTML(
+                                goal?.icon || "🎯"
+                            )}"
                         >
+
                     </label>
 
 
-                    <div class="form-row">
+                    <label>
 
-                        <label>
-                            Data obiettivo
+                        Data obiettivo
 
-                            <input
-                                id="goal-deadline"
-                                type="date"
-                                value="${goal?.deadline || ""}"
-                            >
-                        </label>
+                        <input
+                            id="goal-deadline"
+                            type="date"
+                            value="${goal?.deadline || ""}"
+                        >
 
-                    </div>
+                    </label>
 
 
                     <button
                         class="primary-button full-width"
                         type="submit"
                     >
-                        ${goal
-                            ? "Salva modifiche"
-                            : "Crea obiettivo"}
+
+                        ${
+                            goal
+                                ? "Salva modifiche"
+                                : "Crea obiettivo"
+                        }
+
                     </button>
 
                 </form>

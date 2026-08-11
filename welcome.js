@@ -1,21 +1,16 @@
-function checkFirstAccess(){
+function checkFirstAccess() {
 
-    const user =
-        localStorage.getItem(
-            "app_user_name"
-        );
+    const userName =
+        localStorage.getItem("app_user_name");
 
-
-    if(!user){
-
+    if (!userName) {
         showWelcomeScreen();
-
     }
 
 }
 
 
-function showWelcomeScreen(){
+function showWelcomeScreen() {
 
     document.body.innerHTML = `
 
@@ -23,37 +18,42 @@ function showWelcomeScreen(){
 
             <div class="welcome-card">
 
-
                 <img
                     src="logo.png"
                     class="welcome-logo"
+                    alt="Logo"
                 >
 
+                <span class="eyebrow">
+                    BENVENUTO
+                </span>
 
                 <h1>
-                    Benvenuto 👋
+                    Iniziamo.
                 </h1>
 
-
                 <p>
-                    Iniziamo costruendo il tuo percorso.
+                    Prima di iniziare, dicci come vuoi essere chiamato.
                 </p>
 
+                <form onsubmit="saveUserName(event)">
 
-                <input
-                    id="username-input"
-                    type="text"
-                    placeholder="Come ti chiami?"
-                    maxlength="30"
-                >
+                    <input
+                        id="username-input"
+                        type="text"
+                        maxlength="30"
+                        placeholder="Il tuo nome"
+                        autocomplete="given-name"
+                        required
+                    >
 
+                    <button
+                        type="submit"
+                    >
+                        Continua
+                    </button>
 
-                <button
-                    onclick="saveUserName()"
-                >
-                    Inizia
-                </button>
-
+                </form>
 
             </div>
 
@@ -61,39 +61,49 @@ function showWelcomeScreen(){
 
     `;
 
+    setTimeout(() => {
+
+        document
+            .querySelector("#username-input")
+            ?.focus();
+
+    }, 100);
+
 }
 
 
+function saveUserName(event) {
 
-function saveUserName(){
+    event.preventDefault();
 
     const input =
         document.querySelector(
             "#username-input"
         );
 
-
     const name =
         input.value.trim();
 
-
-    if(!name){
-
-        alert(
-            "Inserisci il tuo nome"
-        );
-
+    if (!name) {
         return;
-
     }
-
 
     localStorage.setItem(
         "app_user_name",
         name
     );
 
-
     location.reload();
+
+}
+
+
+function getUserName() {
+
+    return (
+        localStorage.getItem(
+            "app_user_name"
+        ) || ""
+    );
 
 }

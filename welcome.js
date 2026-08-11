@@ -92,32 +92,23 @@ function saveUserName(event){
 
     event.preventDefault();
 
-
-    const input =
-        document.querySelector(
-            "#username-input"
-        );
-
-
     const name =
-        input.value.trim();
+        document
+        .querySelector("#username-input")
+        .value
+        .trim();
 
 
-    if(!name){
-        return;
-    }
+    if(!name) return;
 
 
     const data = loadData();
 
-
     data.profile.name = name;
-
 
     saveData(data);
 
-
-    window.location.reload();
+    location.reload();
 
 }
 

@@ -1,3 +1,4 @@
+applyProgressTheme();
 document.addEventListener(
     "DOMContentLoaded",
     () => {

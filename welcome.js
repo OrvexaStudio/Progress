@@ -100,29 +100,23 @@ function saveUserName(event){
         .trim();
 
 
-
     if(!name) return;
 
 
-
-    const data =
-        loadData();
-
+    const data = loadData();
 
 
     data.profile.name = name;
-
-data.onboardingCompleted = false;
-
-saveData(data);
-
-location.reload();
-
 
 
     localStorage.setItem(
         "app_user_name",
         name
+    );
+
+
+    localStorage.removeItem(
+        "progress_tutorial_completed"
     );
 
 

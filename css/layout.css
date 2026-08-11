@@ -41,7 +41,7 @@
     place-items: center;
 
     background: var(--text);
-    color: white;
+    color: var(--bg);
 
     font-weight: 700;
 }
@@ -100,9 +100,11 @@
 
 .nav-item.active {
     background: var(--accent);
-    color: white;
+    color: var(--bg);
 }
-
+.nav-item.active span {
+    color: var(--bg);
+}
 
 /* MAIN */
 

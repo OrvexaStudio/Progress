@@ -1770,3 +1770,96 @@
 
     font-size: 12px;
 }
+
+/* =========================================
+   ACTIVITY FORM
+========================================= */
+
+.checkbox-label {
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 10px !important;
+
+    width: 100%;
+
+    margin: 4px 0 2px;
+
+    cursor: pointer;
+
+    color: var(--text);
+
+    font-size: 12px;
+
+    line-height: 1.2;
+}
+
+
+.checkbox-label input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 18px;
+    height: 18px;
+
+    flex: 0 0 18px;
+
+    margin: 0;
+
+    border: 1px solid var(--border);
+
+    border-radius: 5px;
+
+    background: var(--surface);
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .15s ease;
+}
+
+
+.checkbox-label input[type="checkbox"]:checked {
+    background: #000;
+
+    border-color: #000;
+}
+
+
+.checkbox-label input[type="checkbox"]:checked::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+    top: 2px;
+
+    width: 5px;
+    height: 9px;
+
+    border: solid #fff;
+
+    border-width: 0 2px 2px 0;
+
+    transform: rotate(45deg);
+}
+
+
+.checkbox-label input[type="checkbox"]:active {
+    transform: scale(.9);
+}
+
+
+.checkbox-label:hover
+input[type="checkbox"] {
+    border-color: var(--text);
+}

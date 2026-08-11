@@ -50,9 +50,13 @@ function saveData(data) {
 
 
     // aggiorna tutta l'app in tempo reale
+    if(
+    !document.querySelector(".tutorial-page")
+){
     window.dispatchEvent(
         new Event("dataUpdated")
     );
+}
 
 }
 

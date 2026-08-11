@@ -83,7 +83,12 @@ function renderPage(page) {
 
     return;
 }
+if (page === "activity") {
 
+    renderActivityPage();
+
+    return;
+}
 
     content.innerHTML = `
 

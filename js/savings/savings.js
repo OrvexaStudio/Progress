@@ -1271,7 +1271,11 @@ function deleteDeposit(goalId, depositId) {
     if(!deposit) return;
 
 
-    goal.saved -= deposit.amount;
+    goal.saved =
+    Math.max(
+        0,
+        goal.saved - deposit.amount
+    );
 
 
     goal.deposits =

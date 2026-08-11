@@ -1,13 +1,12 @@
 const STORAGE_KEY = "progress_app_data";
 
-
 const defaultData = {
+
+    tutorialCompleted: false,
 
     profile: {
         name: ""
     },
-
-    onboardingCompleted: false,
 
     goals: [],
 

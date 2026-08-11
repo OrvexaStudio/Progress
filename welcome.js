@@ -112,6 +112,12 @@ function saveUserName(event){
 
     data.profile.name = name;
 
+data.onboardingCompleted = false;
+
+saveData(data);
+
+location.reload();
+
 
 
     localStorage.setItem(

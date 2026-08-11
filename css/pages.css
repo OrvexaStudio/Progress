@@ -1692,3 +1692,81 @@
     }
 
 }
+
+/* =========================================
+   ACTIVITY FILTER
+========================================= */
+
+.activity-toolbar select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    min-width: 155px;
+
+    padding: 11px 38px 11px 14px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+
+    background-color: var(--surface);
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, currentColor 50%),
+        linear-gradient(135deg, currentColor 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 17px) 50%,
+        calc(100% - 12px) 50%;
+
+    background-size:
+        5px 5px,
+        5px 5px;
+
+    background-repeat: no-repeat;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .15s ease;
+}
+
+
+.activity-toolbar select:hover {
+    border-color: var(--text-light);
+}
+
+
+.activity-toolbar select:focus {
+    border-color: var(--text);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0, 0, 0, .06);
+}
+
+
+.activity-toolbar select:active {
+    transform: scale(.98);
+}
+
+
+.activity-toolbar select option {
+    background: var(--surface);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 12px;
+}

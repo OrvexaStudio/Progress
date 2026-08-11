@@ -283,73 +283,46 @@ function renderMilestone(milestone, goalId) {
             </button>
 
 
-            <div class="activity-content">
+            <div class="milestone-content">
 
-    <div class="activity-name">
-        ${escapeHTML(activity.title)}
-    </div>
+                <strong
+                    class="${milestone.completed ? "done" : ""}"
+                >
+                    ${escapeHTML(milestone.title)}
+                </strong>
 
-    <div class="activity-time">
-        ${activity.duration} min
-        ·
-        ${dateText}
-    </div>
+            </div>
 
-</div>
 
-<div class="activity-actions">
+            <div class="milestone-actions">
 
-    <button
-        class="text-button"
-        onclick="
-            editGoalActivity(
-                '${activity.id}'
-            )
-        "
-    >
-        Modifica
-    </button>
+                <button
+                    class="text-button"
+                    onclick="
+                        editMilestone(
+                            '${goalId}',
+                            '${milestone.id}'
+                        )
+                    "
+                >
+                    Modifica
+                </button>
 
-    <button
-        class="text-button danger-text"
-        onclick="
-            deleteGoalActivity(
-                '${activity.id}'
-            )
-        "
-    >
-        Elimina
-    </button>
 
-</div>
+                <button
+                    class="text-button danger-text"
+                    onclick="
+                        deleteMilestone(
+                            '${goalId}',
+                            '${milestone.id}'
+                        )
+                    "
+                >
+                    Elimina
+                </button>
 
-<div class="milestone-actions">
+            </div>
 
-    <button
-        class="text-button"
-        onclick="
-            editMilestone(
-                '${goalId}',
-                '${milestone.id}'
-            )
-        "
-    >
-        Modifica
-    </button>
-
-    <button
-        class="text-button danger-text"
-        onclick="
-            deleteMilestone(
-                '${goalId}',
-                '${milestone.id}'
-            )
-        "
-    >
-        Elimina
-    </button>
-
-</div>
         </div>
 
     `;

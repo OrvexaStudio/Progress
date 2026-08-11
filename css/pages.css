@@ -1942,3 +1942,269 @@ input[type="checkbox"] {
     font-family: inherit;
     font-size: 12px;
 }
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+.settings-section {
+
+    margin-top: 30px;
+
+}
+
+
+.settings-section > .eyebrow {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+}
+
+
+.settings-profile-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+
+.settings-avatar {
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #000;
+
+    color: #fff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+}
+
+
+.settings-profile-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    flex: 1;
+
+}
+
+
+.settings-profile-info strong {
+
+    font-size: 14px;
+
+}
+
+
+.settings-profile-info span {
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+}
+
+
+.settings-list {
+
+    padding: 0;
+
+    overflow: hidden;
+
+}
+
+
+.settings-row {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 17px 18px;
+
+    border: 0;
+
+    border-bottom: 1px solid var(--border);
+
+    background: transparent;
+
+    color: var(--text);
+
+    text-align: left;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+}
+
+
+.settings-row:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.settings-row:hover {
+
+    background:
+        var(--surface-soft);
+
+}
+
+
+.settings-row > div {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+
+.settings-row strong {
+
+    font-size: 12px;
+
+}
+
+
+.settings-row span {
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.settings-arrow {
+
+    color: var(--text-light) !important;
+
+    font-size: 20px !important;
+
+    line-height: 1;
+
+}
+
+
+.settings-danger strong {
+
+    color: #b42318;
+
+}
+
+
+.settings-danger:hover {
+
+    background:
+        rgba(180, 35, 24, .04);
+
+}
+
+
+.settings-about {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 45px 0 25px;
+
+    text-align: center;
+
+}
+
+
+.settings-about strong {
+
+    font-size: 13px;
+
+}
+
+
+.settings-about span {
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.settings-about small {
+
+    margin-top: 5px;
+
+    color: var(--text-light);
+
+    font-size: 9px;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .settings-profile-card {
+
+        align-items: flex-start;
+
+        flex-wrap: wrap;
+
+    }
+
+
+    .settings-profile-info {
+
+        padding-top: 3px;
+
+    }
+
+
+    .settings-profile-card
+    .secondary-button {
+
+        width: 100%;
+
+        margin-top: 4px;
+
+    }
+
+}

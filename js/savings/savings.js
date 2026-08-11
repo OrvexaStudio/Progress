@@ -219,7 +219,7 @@ function renderSavingsGoal(goal) {
             }
 
 
-            <div class="savings-card-actions">
+<div class="savings-card-actions">
 
     <button
         class="secondary-button"
@@ -241,32 +241,6 @@ function renderSavingsGoal(goal) {
         "
     >
         Dettagli
-    </button>
-
-</div>
-
-<div class="savings-management-actions">
-
-    <button
-        class="text-button"
-        onclick="
-            openSavingsEditModal(
-                '${goal.id}'
-            )
-        "
-    >
-        Modifica
-    </button>
-
-    <button
-        class="text-button danger-text"
-        onclick="
-            deleteSavingsGoal(
-                '${goal.id}'
-            )
-        "
-    >
-        Elimina
     </button>
 
 </div>
@@ -758,54 +732,52 @@ function openSavingsDetails(goalId) {
             </button>
 
 
-            <div class="goal-detail-header">
+<div class="goal-detail-header">
 
-                <div>
+    <div>
 
-                    <div class="goal-detail-icon">
-                        ${goal.icon}
-                    </div>
+        <div class="goal-detail-icon">
+            ${goal.icon}
+        </div>
 
-                    <h2>
-                        ${escapeHTML(goal.title)}
-                    </h2>
+        <h2>
+            ${escapeHTML(goal.title)}
+        </h2>
 
-                    <p>
-                        Il tuo piano per raggiungere
-                        questo obiettivo.
-                    </p>
+        <p>
+            Il tuo piano per raggiungere
+            questo obiettivo.
+        </p>
 
-                </div>
+    </div>
 
-            </div>
+    <div class="goal-detail-actions">
 
+        <button
+            class="secondary-button"
+            onclick="
+                openSavingsEditModal(
+                    '${goal.id}'
+                )
+            "
+        >
+            Modifica
+        </button>
 
-            <div class="card">
+        <button
+            class="danger-button"
+            onclick="
+                deleteSavingsGoal(
+                    '${goal.id}'
+                )
+            "
+        >
+            Elimina
+        </button>
 
-                <span class="eyebrow">
-                    PROGRESSO
-                </span>
+    </div>
 
-                <div class="detail-percentage">
-                    ${Math.round(
-                        calculation.percentage
-                    )}%
-                </div>
-
-
-                <div class="progress-bar large">
-
-                    <div
-                        class="progress-value"
-                        style="
-                            width:
-                            ${calculation.percentage}%
-                        "
-                    ></div>
-
-                </div>
-
-            </div>
+</div>
 
 
             <div class="detail-stats">

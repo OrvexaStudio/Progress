@@ -3,8 +3,8 @@ const STORAGE_KEY = "progress_app_data";
 
 const defaultData = {
     profile: {
-        name: "Francesco"
-    },
+    name: ""
+},
 
     goals: [
         {

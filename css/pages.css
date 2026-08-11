@@ -1296,5 +1296,33 @@
 .sidebar .nav-item i {
     flex-shrink: 0;
 }
+.sidebar .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
+    width: 100%;
+
+    gap: 14px;
+
+    padding: 12px 16px;
+
+    white-space: nowrap;
+
+    overflow: visible;
+}
+
+.sidebar .nav-item span {
+    flex-shrink: 0;
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 18px;
+}
+
+.sidebar .nav-item {
+    font-size: 14px;
+    color: var(--text);
+}
 }

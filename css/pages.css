@@ -2742,3 +2742,38 @@ input[type="checkbox"] {
     font-weight:bold;
 
 }
+
+.tutorial-exit{
+
+    animation:
+    tutorialExit
+    .5s
+    ease
+    forwards;
+
+}
+
+
+
+@keyframes tutorialExit{
+
+
+    from{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+
+    to{
+
+        opacity:0;
+
+        transform:scale(.96);
+
+    }
+
+
+}

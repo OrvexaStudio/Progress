@@ -1089,3 +1089,285 @@ function renderDeposits(goal) {
 
 }
 
+function openSavingsEditModal(goalId) {
+
+    const data = loadData();
+
+    const goal =
+        data.savings.find(
+            item => item.id === goalId
+        );
+
+    if (!goal) return;
+
+
+    let container =
+        document.querySelector(
+            "#savings-modal-container"
+        );
+
+
+    if (!container) {
+
+        container =
+            document.createElement("div");
+
+        container.id =
+            "savings-modal-container";
+
+        document.body.appendChild(container);
+
+    }
+
+
+    container.innerHTML = `
+
+        <div
+            class="modal-backdrop"
+            onclick="closeSavingsModal(event)"
+        >
+
+            <div
+                class="modal"
+                onclick="event.stopPropagation()"
+            >
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            MODIFICA
+                        </span>
+
+                        <h2>
+                            Modifica obiettivo
+                        </h2>
+
+                    </div>
+
+                    <button
+                        class="modal-close"
+                        onclick="closeSavingsModal()"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <form
+                    onsubmit="
+                        updateSavingsGoal(
+                            event,
+                            '${goal.id}'
+                        )
+                    "
+                >
+
+                    <label>
+
+                        Cosa vuoi comprare?
+
+                        <input
+                            id="edit-savings-title"
+                            type="text"
+                            maxlength="60"
+                            value="${escapeHTML(
+                                goal.title
+                            )}"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Quanto costa?
+
+                        <input
+                            id="edit-savings-target"
+                            type="number"
+                            min="1"
+                            step="0.01"
+                            value="${goal.target}"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Data obiettivo
+
+                        <input
+                            id="edit-savings-deadline"
+                            type="date"
+                            value="${goal.deadline || ""}"
+                            required
+                        >
+
+                    </label>
+
+
+                    <label>
+
+                        Icona
+
+                        <input
+                            id="edit-savings-icon"
+                            type="text"
+                            maxlength="4"
+                            value="${escapeHTML(
+                                goal.icon || "🎯"
+                            )}"
+                        >
+
+                    </label>
+
+
+                    <button
+                        type="submit"
+                        class="primary-button full-width"
+                    >
+                        Salva modifiche
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    `;
+}
+
+function updateSavingsGoal(
+    event,
+    goalId
+) {
+
+    event.preventDefault();
+
+
+    const data = loadData();
+
+
+    const goal =
+        data.savings.find(
+            item => item.id === goalId
+        );
+
+
+    if (!goal) return;
+
+
+    const title =
+        document.querySelector(
+            "#edit-savings-title"
+        ).value.trim();
+
+
+    const target =
+        Number(
+            document.querySelector(
+                "#edit-savings-target"
+            ).value
+        );
+
+
+    const deadline =
+        document.querySelector(
+            "#edit-savings-deadline"
+        ).value;
+
+
+    const icon =
+        document.querySelector(
+            "#edit-savings-icon"
+        ).value.trim() || "🎯";
+
+
+    if (
+        !title ||
+        target <= 0 ||
+        !deadline
+    ) {
+        return;
+    }
+
+
+    goal.title =
+        title;
+
+
+    goal.target =
+        target;
+
+
+    goal.deadline =
+        deadline;
+
+
+    goal.icon =
+        icon;
+
+
+    // Se il nuovo prezzo è inferiore
+    // a quanto già risparmiato,
+    // consideriamo l'obiettivo completato.
+    if (goal.saved > target) {
+
+        goal.saved =
+            target;
+
+    }
+
+
+    saveData(data);
+
+    closeSavingsModal();
+
+    renderSavingsPage();
+
+}
+
+function deleteSavingsGoal(goalId) {
+
+    const data = loadData();
+
+
+    const goal =
+        data.savings.find(
+            item => item.id === goalId
+        );
+
+
+    if (!goal) return;
+
+
+    const confirmed =
+        confirm(
+            `Vuoi eliminare l'obiettivo "${goal.title}"?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    data.savings =
+        data.savings.filter(
+            item => item.id !== goalId
+        );
+
+
+    saveData(data);
+
+    renderSavingsPage();
+
+}
+

@@ -382,3 +382,10 @@ function renderActivity(activity) {
 
     `;
 }
+
+window.addEventListener(
+    "dataUpdated",
+    () => {
+        renderDashboard();
+    }
+);

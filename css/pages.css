@@ -670,3 +670,258 @@
         font-size: 43px;
     }
 }
+
+/* SAVINGS */
+
+.savings-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(320px, 1fr)
+        );
+
+    gap: 18px;
+}
+
+
+.savings-goal-header {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.savings-goal-header h3 {
+    font-size: 17px;
+}
+
+
+.savings-status {
+    display: inline-block;
+
+    margin-top: 5px;
+
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+.savings-status.success {
+    color: var(--success);
+}
+
+
+.savings-status.danger {
+    color: var(--danger);
+}
+
+
+.savings-status.active {
+    color: var(--text-secondary);
+}
+
+
+.savings-big-number {
+    display: flex;
+    align-items: baseline;
+
+    gap: 6px;
+
+    margin-top: 25px;
+}
+
+
+.savings-big-number strong {
+    font-size: 34px;
+    letter-spacing: -1.5px;
+}
+
+
+.savings-big-number span {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+.savings-numbers {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.savings-numbers div {
+    padding: 13px;
+
+    border-radius: 13px;
+
+    background: var(--surface-soft);
+}
+
+
+.savings-numbers strong,
+.savings-numbers span {
+    display: block;
+}
+
+
+.savings-numbers strong {
+    font-size: 16px;
+}
+
+
+.savings-numbers span {
+    margin-top: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+}
+
+
+.savings-plan-box {
+    margin-top: 18px;
+
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background: var(--accent);
+    color: white;
+}
+
+
+.savings-plan-box .eyebrow {
+    color: rgba(255,255,255,.5);
+}
+
+
+.savings-plan-box strong {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 20px;
+}
+
+
+.savings-plan-box p {
+    margin-top: 7px;
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+.savings-card-actions {
+    display: flex;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+
+.savings-card-actions button {
+    flex: 1;
+}
+
+
+/* EQUIVALENTS */
+
+.savings-equivalents {
+    margin-top: 18px;
+}
+
+
+.equivalent-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+
+.equivalent {
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background: var(--surface-soft);
+}
+
+
+.equivalent-icon {
+    display: block;
+
+    margin-bottom: 12px;
+
+    font-size: 20px;
+}
+
+
+.equivalent strong,
+.equivalent span,
+.equivalent small {
+    display: block;
+}
+
+
+.equivalent strong {
+    font-size: 22px;
+}
+
+
+.equivalent span {
+    margin-top: 3px;
+
+    font-size: 11px;
+}
+
+
+.equivalent small {
+    margin-top: 4px;
+
+    color: var(--text-light);
+
+    font-size: 9px;
+}
+
+
+.deposits-card {
+    margin-top: 18px;
+}
+
+
+@media (max-width: 800px) {
+
+    .equivalent-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .savings-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .equivalent-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}

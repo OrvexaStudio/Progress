@@ -126,3 +126,115 @@ function getPageIcon(page) {
     return icons[page] || "•";
 
 }
+
+function initializeMobileSidebar() {
+
+    const toggle =
+        document.querySelector(
+            "#mobile-sidebar-toggle"
+        );
+
+    const overlay =
+        document.querySelector(
+            "#mobile-sidebar-overlay"
+        );
+
+    const sidebar =
+        document.querySelector(
+            ".sidebar"
+        );
+
+
+    if (
+        !toggle ||
+        !overlay ||
+        !sidebar
+    ) {
+        return;
+    }
+
+
+    function toggleSidebar() {
+
+        const isOpen =
+            sidebar.classList.contains(
+                "mobile-open"
+            );
+
+
+        sidebar.classList.toggle(
+            "mobile-open",
+            !isOpen
+        );
+
+        overlay.classList.toggle(
+            "active",
+            !isOpen
+        );
+
+        toggle.classList.toggle(
+            "active",
+            !isOpen
+        );
+
+        toggle.setAttribute(
+            "aria-expanded",
+            String(!isOpen)
+        );
+
+    }
+
+
+    toggle.addEventListener(
+        "click",
+        toggleSidebar
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        toggleSidebar
+    );
+
+
+    const navItems =
+        sidebar.querySelectorAll(
+            ".nav-item"
+        );
+
+
+    navItems.forEach(item => {
+
+        item.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    window.innerWidth <= 768
+                ) {
+
+                    sidebar.classList.remove(
+                        "mobile-open"
+                    );
+
+                    overlay.classList.remove(
+                        "active"
+                    );
+
+                    toggle.classList.remove(
+                        "active"
+                    );
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}

@@ -43,7 +43,12 @@ function navigateTo(page) {
     const title =
         pageTitles[page] || "Progress";
 
-    document.querySelector("#page-title").textContent = title;
+    const titleElement =
+    document.querySelector("#page-title");
+
+if(titleElement){
+    titleElement.textContent = title;
+}
 
 
     renderPage(page);

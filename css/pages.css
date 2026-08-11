@@ -261,7 +261,7 @@
 
     border-radius: 24px;
 
-    background: white;
+    background: var(--surface);
 
     box-shadow:
         0 30px 80px
@@ -365,9 +365,8 @@
 
 .modal input:focus,
 .modal textarea:focus {
-    border-color: #b5b8be;
-
-    background: white;
+    border-color: var(--border);
+    background: var(--surface-soft);
 }
 
 

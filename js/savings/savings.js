@@ -974,6 +974,7 @@ function renderDeposits(goal) {
             ${
                 deposits.length
                     ? `
+
                         <div class="activity-list">
 
                             ${
@@ -983,241 +984,101 @@ function renderDeposits(goal) {
                                     .map(
                                         deposit => `
 
-                                            <div
-                                                class="
-                                                    activity-item
-                                                "
-                                            >
+                                            <div class="activity-item">
 
-                                                <div
-                                                    class="
-                                                        activity-dot
-                                                    "
-                                                ></div>
-
-                                               <div
-    class="activity-content"
->
-
-    <div
-        class="activity-name"
-    >
-        + ${formatCurrency(
-            deposit.amount
-        )}
-    </div>
+                                                <div class="activity-dot"></div>
 
 
-    <div
-        class="activity-time"
-    >
-        ${
-            escapeHTML(
-                deposit.note ||
-                "Risparmio"
-            )
-        }
+                                                <div class="activity-content">
 
-        ·
-
-        ${
-            formatDate(
-                deposit.date
-            )
-        }
-    </div>
+                                                    <div class="activity-name">
+                                                        + ${formatCurrency(
+                                                            deposit.amount
+                                                        )}
+                                                    </div>
 
 
-    <div class="activity-actions">
+                                                    <div class="activity-time">
 
-        <button
-            class="text-button"
-            onclick="
-                editDeposit(
-                    '${goal.id}',
-                    '${deposit.id}'
-                )
-            "
-        >
-            Modifica
-        </button>
+                                                        ${
+                                                            escapeHTML(
+                                                                deposit.note ||
+                                                                "Risparmio"
+                                                            )
+                                                        }
+
+                                                        ·
+
+                                                        ${
+                                                            formatDate(
+                                                                deposit.date
+                                                            )
+                                                        }
+
+                                                    </div>
 
 
-        <button
-            class="text-button danger-text"
-            onclick="
-                deleteDeposit(
-                    '${goal.id}',
-                    '${deposit.id}'
-                )
-            "
-        >
-            Elimina
-        </button>
+                                                    <div class="activity-actions">
 
-    </div>
+                                                        <button
+                                                            class="text-button"
+                                                            onclick="
+                                                                editDeposit(
+                                                                    '${goal.id}',
+                                                                    '${deposit.id}'
+                                                                )
+                                                            "
+                                                        >
+                                                            Modifica
+                                                        </button>
 
-</div>
+
+                                                        <button
+                                                            class="text-button danger-text"
+                                                            onclick="
+                                                                deleteDeposit(
+                                                                    '${goal.id}',
+                                                                    '${deposit.id}'
+                                                                )
+                                                            "
+                                                        >
+                                                            Elimina
+                                                        </button>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        `
+                                    )
+                                    .join("")
+                            }
+
+                        </div>
+
+                    `
+                    : `
+
+                        <div class="empty-state">
+
+                            <strong>
+                                Nessun versamento
+                            </strong>
+
+                            Inizia a mettere da parte
+                            qualcosa per questo obiettivo.
+
+                        </div>
+
+                    `
+            }
 
         </section>
 
     `;
 
-}
-
-function openSavingsEditModal(goalId) {
-
-    const data = loadData();
-
-    const goal =
-        data.savings.find(
-            item => item.id === goalId
-        );
-
-    if (!goal) return;
-
-
-    let container =
-        document.querySelector(
-            "#savings-modal-container"
-        );
-
-
-    if (!container) {
-
-        container =
-            document.createElement("div");
-
-        container.id =
-            "savings-modal-container";
-
-        document.body.appendChild(container);
-
-    }
-
-
-    container.innerHTML = `
-
-        <div
-            class="modal-backdrop"
-            onclick="closeSavingsModal(event)"
-        >
-
-            <div
-                class="modal"
-                onclick="event.stopPropagation()"
-            >
-
-                <div class="modal-header">
-
-                    <div>
-
-                        <span class="eyebrow">
-                            MODIFICA
-                        </span>
-
-                        <h2>
-                            Modifica obiettivo
-                        </h2>
-
-                    </div>
-
-                    <button
-                        class="modal-close"
-                        onclick="closeSavingsModal()"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-
-                <form
-                    onsubmit="
-                        updateSavingsGoal(
-                            event,
-                            '${goal.id}'
-                        )
-                    "
-                >
-
-                    <label>
-
-                        Cosa vuoi comprare?
-
-                        <input
-                            id="edit-savings-title"
-                            type="text"
-                            maxlength="60"
-                            value="${escapeHTML(
-                                goal.title
-                            )}"
-                            required
-                        >
-
-                    </label>
-
-
-                    <label>
-
-                        Quanto costa?
-
-                        <input
-                            id="edit-savings-target"
-                            type="number"
-                            min="1"
-                            step="0.01"
-                            value="${goal.target}"
-                            required
-                        >
-
-                    </label>
-
-
-                    <label>
-
-                        Data obiettivo
-
-                        <input
-                            id="edit-savings-deadline"
-                            type="date"
-                            value="${goal.deadline || ""}"
-                            required
-                        >
-
-                    </label>
-
-
-                    <label>
-
-                        Icona
-
-                        <input
-                            id="edit-savings-icon"
-                            type="text"
-                            maxlength="4"
-                            value="${escapeHTML(
-                                goal.icon || "🎯"
-                            )}"
-                        >
-
-                    </label>
-
-
-                    <button
-                        type="submit"
-                        class="primary-button full-width"
-                    >
-                        Salva modifiche
-                    </button>
-
-                </form>
-
-            </div>
-
-        </div>
-
-    `;
 }
 
 function updateSavingsGoal(
@@ -1437,7 +1298,7 @@ function editDeposit(goalId, depositId) {
         );
 
 
-    if(!goal) return;
+    if (!goal) return;
 
 
     const deposit =
@@ -1446,7 +1307,7 @@ function editDeposit(goalId, depositId) {
         );
 
 
-    if(!deposit) return;
+    if (!deposit) return;
 
 
     const amount =
@@ -1456,8 +1317,17 @@ function editDeposit(goalId, depositId) {
         );
 
 
-    if(!amount || Number(amount) <= 0)
+    const newAmount =
+        Number(amount);
+
+
+    if (
+        !amount ||
+        !newAmount ||
+        newAmount <= 0
+    ) {
         return;
+    }
 
 
     const note =
@@ -1468,25 +1338,51 @@ function editDeposit(goalId, depositId) {
 
 
     const difference =
-        Number(amount) - deposit.amount;
+        newAmount - deposit.amount;
 
 
-    goal.saved += difference;
+    const newTotal =
+        goal.saved + difference;
 
 
-    if(goal.saved < 0)
-        goal.saved = 0;
+    if (newTotal > goal.target) {
+
+        alert(
+            "Il nuovo importo supera il valore dell'obiettivo."
+        );
+
+        return;
+
+    }
+
+
+    if (newTotal < 0) {
+
+        alert(
+            "Il nuovo totale non può essere negativo."
+        );
+
+        return;
+
+    }
+
+
+    goal.saved =
+        newTotal;
 
 
     deposit.amount =
-        Number(amount);
+        newAmount;
 
 
     deposit.note =
-        note.trim();
+        note
+            ? note.trim()
+            : "";
 
 
     saveData(data);
+
 
     openSavingsDetails(goalId);
 

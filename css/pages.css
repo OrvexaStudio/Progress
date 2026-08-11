@@ -2208,3 +2208,250 @@ input[type="checkbox"] {
     }
 
 }
+
+/* =========================================
+   APPEARANCE
+========================================= */
+
+.theme-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.theme-option {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    background: var(--surface);
+
+    color: var(--text);
+
+    text-align: left;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition:
+        border-color .2s ease,
+        transform .15s ease,
+        background .2s ease;
+
+}
+
+
+.theme-option:hover {
+
+    background: var(--surface-soft);
+
+}
+
+
+.theme-option:active {
+
+    transform: scale(.985);
+
+}
+
+
+.theme-option.active {
+
+    border-color: var(--text);
+
+}
+
+
+.theme-preview {
+
+    width: 76px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+
+}
+
+
+.preview-sidebar {
+
+    width: 22px;
+
+}
+
+
+.preview-content {
+
+    flex: 1;
+
+    padding: 8px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+.preview-content div {
+
+    height: 5px;
+
+    border-radius: 4px;
+
+}
+
+
+.light-preview {
+
+    background: #fff;
+
+}
+
+
+.light-preview .preview-sidebar {
+
+    background: #f0f0f0;
+
+}
+
+
+.light-preview .preview-content div {
+
+    background: #dedede;
+
+}
+
+
+.dark-preview {
+
+    background: #181818;
+
+}
+
+
+.dark-preview .preview-sidebar {
+
+    background: #101010;
+
+}
+
+
+.dark-preview .preview-content div {
+
+    background: #444;
+
+}
+
+
+.system-preview {
+
+    background: #fff;
+
+}
+
+
+.system-preview .preview-half {
+
+    width: 50%;
+
+}
+
+
+.system-preview .preview-half:first-child {
+
+    background: #fff;
+
+}
+
+
+.system-preview .preview-half:last-child {
+
+    background: #181818;
+
+}
+
+
+.theme-option-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    flex: 1;
+
+}
+
+
+.theme-option-text strong {
+
+    font-size: 12px;
+
+}
+
+
+.theme-option-text span {
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+.theme-check {
+
+    display: none;
+
+    width: 20px;
+    height: 20px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    color: #fff !important;
+
+    font-size: 10px !important;
+
+}
+
+
+.theme-option.active .theme-check {
+
+    display: flex;
+
+}

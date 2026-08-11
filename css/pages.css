@@ -1373,3 +1373,16 @@
     }
 
 }
+
+@media (max-width: 768px) {
+
+    .sidebar .nav-item.active {
+        background: #000;
+        color: #fff !important;
+    }
+
+    .sidebar .nav-item.active span {
+        color: #fff !important;
+    }
+
+}

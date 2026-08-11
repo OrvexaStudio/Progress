@@ -107,6 +107,10 @@ function saveUserName(event){
     data.profile.name = name;
 
     saveData(data);
+    localStorage.setItem(
+    "progress_first_access",
+    "true"
+);
 
     location.reload();
 

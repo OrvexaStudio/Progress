@@ -283,16 +283,73 @@ function renderMilestone(milestone, goalId) {
             </button>
 
 
-            <div class="milestone-content">
+            <div class="activity-content">
 
-                <strong
-                    class="${milestone.completed ? "done" : ""}"
-                >
-                    ${escapeHTML(milestone.title)}
-                </strong>
+    <div class="activity-name">
+        ${escapeHTML(activity.title)}
+    </div>
 
-            </div>
+    <div class="activity-time">
+        ${activity.duration} min
+        ·
+        ${dateText}
+    </div>
 
+</div>
+
+<div class="activity-actions">
+
+    <button
+        class="text-button"
+        onclick="
+            editGoalActivity(
+                '${activity.id}'
+            )
+        "
+    >
+        Modifica
+    </button>
+
+    <button
+        class="text-button danger-text"
+        onclick="
+            deleteGoalActivity(
+                '${activity.id}'
+            )
+        "
+    >
+        Elimina
+    </button>
+
+</div>
+
+<div class="milestone-actions">
+
+    <button
+        class="text-button"
+        onclick="
+            editMilestone(
+                '${goalId}',
+                '${milestone.id}'
+            )
+        "
+    >
+        Modifica
+    </button>
+
+    <button
+        class="text-button danger-text"
+        onclick="
+            deleteMilestone(
+                '${goalId}',
+                '${milestone.id}'
+            )
+        "
+    >
+        Elimina
+    </button>
+
+</div>
         </div>
 
     `;
@@ -426,8 +483,8 @@ function renderGoalActivities(goal) {
                             .reverse()
                             .slice(0, 8)
                             .map(
-                                renderGoalActivity
-                            )
+    activity => renderGoalActivity(activity, goal.id)
+)
                             .join("")
                         : `
                             <div class="empty-state">
@@ -449,7 +506,7 @@ function renderGoalActivities(goal) {
 }
 
 
-function renderGoalActivity(activity) {
+function renderGoalActivity(activity, goalId) {
 
     const date =
         new Date(activity.date);
@@ -474,21 +531,45 @@ function renderGoalActivity(activity) {
 
             <div class="activity-content">
 
-                <div class="activity-name">
-                    ${escapeHTML(activity.title)}
-                </div>
+    <div class="activity-name">
+        ${escapeHTML(activity.title)}
+    </div>
 
-                <div class="activity-time">
+    <div class="activity-time">
+        ${activity.duration} min
+        ·
+        ${dateText}
+    </div>
 
-                    ${activity.duration} min
+</div>
 
-                    ·
 
-                    ${dateText}
+<div class="activity-actions">
 
-                </div>
+    <button
+        class="text-button"
+        onclick="
+            editGoalActivity(
+                '${activity.id}'
+            )
+        "
+    >
+        Modifica
+    </button>
 
-            </div>
+
+    <button
+        class="text-button danger-text"
+        onclick="
+            deleteGoalActivity(
+                '${activity.id}'
+            )
+        "
+    >
+        Elimina
+    </button>
+
+</div>
 
         </div>
 
@@ -568,4 +649,82 @@ function addGoalActivity(goalId) {
     saveData(data);
 
     openGoalDetails(goalId);
+}
+
+function editMilestone(goalId, milestoneId) {
+
+    const data = loadData();
+
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
+
+    if(!goal) return;
+
+
+    const milestone =
+        goal.milestones.find(
+            item => item.id === milestoneId
+        );
+
+
+    if(!milestone) return;
+
+
+    const title =
+        prompt(
+            "Modifica milestone:",
+            milestone.title
+        );
+
+
+    if(!title || !title.trim()) return;
+
+
+    milestone.title =
+        title.trim();
+
+
+    saveData(data);
+
+    openGoalDetails(goalId);
+}
+
+
+
+function deleteMilestone(goalId, milestoneId) {
+
+
+    if(
+        !confirm(
+            "Eliminare questa milestone?"
+        )
+    ) return;
+
+
+    const data = loadData();
+
+
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
+
+
+    if(!goal) return;
+
+
+    goal.milestones =
+        goal.milestones.filter(
+            item => item.id !== milestoneId
+        );
+
+
+    updateGoalProgress(goal);
+
+    saveData(data);
+
+    openGoalDetails(goalId);
+
 }

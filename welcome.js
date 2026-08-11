@@ -107,10 +107,14 @@ function saveUserName(event){
     data.profile.name = name;
 
     saveData(data);
+
+
+    // salva anche il completamento del primo accesso
     localStorage.setItem(
-    "progress_first_access",
-    "true"
-);
+        "app_user_name",
+        name
+    );
+
 
     location.reload();
 

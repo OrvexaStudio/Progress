@@ -71,3 +71,48 @@ p {
     background: #111318;
     color: white;
 }
+
+/* =========================================
+   DARK THEME
+========================================= */
+
+:root[data-theme="dark"] {
+
+    --background: #101010;
+
+    --surface: #181818;
+
+    --surface-soft: #222222;
+
+    --text: #f5f5f5;
+
+    --text-secondary: #a7a7a7;
+
+    --text-light: #707070;
+
+    --border: #2b2b2b;
+
+}
+
+
+@media (prefers-color-scheme: dark) {
+
+    :root[data-theme="system"] {
+
+        --background: #101010;
+
+        --surface: #181818;
+
+        --surface-soft: #222222;
+
+        --text: #f5f5f5;
+
+        --text-secondary: #a7a7a7;
+
+        --text-light: #707070;
+
+        --border: #2b2b2b;
+
+    }
+
+}

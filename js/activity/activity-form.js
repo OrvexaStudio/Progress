@@ -160,17 +160,22 @@ function openActivityModal() {
                     </label>
 
 
-                    <label class="checkbox-label">
+<label
+    class="checkbox-label"
+    for="activity-completed"
+>
 
-                        <input
-                            id="activity-completed"
-                            type="checkbox"
-                            checked
-                        >
+    <input
+        id="activity-completed"
+        type="checkbox"
+        checked
+    >
 
-                        Attività completata
+    <span>
+        Attività completata
+    </span>
 
-                    </label>
+</label>
 
 
                     <button

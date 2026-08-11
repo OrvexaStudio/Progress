@@ -116,7 +116,7 @@ function renderGoalCard(goal) {
                 <div class="stat">
 
                     <div class="stat-value">
-                        ${goal.milestones}
+                        ${Array.isArray(goal.milestones) ? goal.milestones.length : 0}
                     </div>
 
                     <div class="stat-label">

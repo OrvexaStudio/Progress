@@ -2542,3 +2542,66 @@ input[type="checkbox"] {
     font-size:16px;
 
 }
+
+.welcome-container{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+
+.welcome-card{
+
+    width:100%;
+
+    max-width:420px;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+
+.welcome-logo{
+
+    width:100px;
+
+    height:100px;
+
+    object-fit:contain;
+
+    margin-bottom:25px;
+
+}
+
+
+.welcome-card h1{
+
+    margin:15px 0;
+
+}
+
+
+.welcome-card p{
+
+    color:#777;
+
+    margin-bottom:30px;
+
+}
+
+
+.welcome-card input{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+}

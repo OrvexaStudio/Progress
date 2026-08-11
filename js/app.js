@@ -5,6 +5,7 @@ document.addEventListener(
         loadData();
 
         initializeNavigation();
+        initializeMobileSidebar();
 
         navigateTo("dashboard");
 

@@ -105,9 +105,11 @@ function renderGoalPreview(goal) {
                 </span>
 
                 <span>
-                    ${goal.completedMilestones || 0}/${
-                        goal.milestones?.length || 0
-                    } milestone
+                   ${goal.completedMilestones || 0}/${
+    Array.isArray(goal.milestones)
+        ? goal.milestones.length
+        : 0
+} milestone
                 </span>
 
             </div>

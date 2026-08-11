@@ -2455,3 +2455,90 @@ input[type="checkbox"] {
     display: flex;
 
 }
+
+.welcome-screen{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#ffffff;
+
+}
+
+
+.welcome-card{
+
+    width:90%;
+    max-width:400px;
+
+    text-align:center;
+
+}
+
+
+.welcome-logo{
+
+    width:120px;
+    height:120px;
+
+    object-fit:contain;
+
+    margin-bottom:30px;
+
+}
+
+
+.welcome-card h1{
+
+    font-size:32px;
+    margin-bottom:10px;
+
+}
+
+
+.welcome-card p{
+
+    color:#777;
+    margin-bottom:30px;
+
+}
+
+
+.welcome-card input{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    border:1px solid #ddd;
+
+    font-size:16px;
+
+    margin-bottom:15px;
+
+}
+
+
+.welcome-card button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#111;
+
+    color:white;
+
+    font-size:16px;
+
+}

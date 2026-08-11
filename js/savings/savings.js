@@ -1343,3 +1343,35 @@ function deleteSavingsGoal(goalId) {
 
 }
 
+function renderEmptySavings() {
+
+    return `
+
+        <div class="empty-state savings-empty-state">
+
+            <div class="empty-state-icon">
+                €
+            </div>
+
+            <h3>
+                Nessun obiettivo di risparmio
+            </h3>
+
+            <p>
+                Crea il tuo primo obiettivo
+                e trasforma un desiderio
+                in un piano concreto.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="openSavingsModal()"
+            >
+                + Crea il primo obiettivo
+            </button>
+
+        </div>
+
+    `;
+
+}

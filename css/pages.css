@@ -787,18 +787,17 @@
 
 .savings-plan-box {
     margin-top: 18px;
-
     padding: 17px;
-
     border-radius: 15px;
 
-    background: var(--accent);
-    color: white;
+    background: var(--surface-soft);
+    color: var(--text);
+
+    border: 1px solid var(--border);
 }
 
-
 .savings-plan-box .eyebrow {
-    color: rgba(255,255,255,.5);
+    color: var(--text-light);
 }
 
 
@@ -808,13 +807,15 @@
     margin-top: 7px;
 
     font-size: 20px;
+
+    color: var(--text);
 }
 
 
 .savings-plan-box p {
     margin-top: 7px;
 
-    color: rgba(255,255,255,.65);
+    color: var(--text-secondary);
 
     font-size: 10px;
     line-height: 1.5;

@@ -64,6 +64,9 @@ function loadData() {
 
         return structuredClone(defaultData);
     }
+    if (!data.activities) {
+    data.activities = [];
+}
 }
 
 

@@ -92,6 +92,7 @@ function saveUserName(event){
 
     event.preventDefault();
 
+
     const name =
         document
         .querySelector("#username-input")
@@ -99,27 +100,32 @@ function saveUserName(event){
         .trim();
 
 
+
     if(!name) return;
 
 
-    const data = loadData();
+
+    const data =
+        loadData();
+
+
 
     data.profile.name = name;
 
-    saveData(data);
 
 
-    // salva anche il completamento del primo accesso
     localStorage.setItem(
         "app_user_name",
         name
     );
 
 
+    saveData(data);
+
+
     location.reload();
 
 }
-
 
 function getUserName() {
 

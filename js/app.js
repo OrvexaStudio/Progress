@@ -1,4 +1,5 @@
 applyProgressTheme();
+
 document.addEventListener(
     "DOMContentLoaded",
     () => {
@@ -7,6 +8,8 @@ document.addEventListener(
 
         initializeNavigation();
         initializeMobileSidebar();
+
+        updateGlobalProfile();
 
         navigateTo("dashboard");
 

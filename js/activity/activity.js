@@ -391,28 +391,39 @@ function filterActivities() {
 
 function deleteActivity(id) {
 
-    const data =
-        loadData();
+    const data = loadData();
+
+    if (!Array.isArray(data.activities)) {
+        data.activities = [];
+        saveData(data);
+        renderActivityPage();
+        return;
+    }
 
 
-    if (!data.activities) {
+    const index =
+        data.activities.findIndex(
+            activity =>
+                String(activity.id) === String(id)
+        );
+
+
+    if (index === -1) {
+        console.error(
+            "Attività non trovata:",
+            id
+        );
+
         return;
     }
 
 
     const activity =
-        data.activities.find(
-            item => item.id === id
-        );
-
-
-    if (!activity) {
-        return;
-    }
+        data.activities[index];
 
 
     const confirmed =
-        confirm(
+        window.confirm(
             `Vuoi eliminare "${activity.title}"?`
         );
 
@@ -422,10 +433,10 @@ function deleteActivity(id) {
     }
 
 
-    data.activities =
-        data.activities.filter(
-            item => item.id !== id
-        );
+    data.activities.splice(
+        index,
+        1
+    );
 
 
     saveData(data);

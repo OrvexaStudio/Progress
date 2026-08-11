@@ -130,3 +130,14 @@ p {
     }
 
 }
+html {
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}
+
+body {
+    transition:
+        background-color .25s ease,
+        color .25s ease;
+}

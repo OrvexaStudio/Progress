@@ -14,52 +14,68 @@ function showWelcomeScreen() {
 
     document.body.innerHTML = `
 
-        <div class="welcome-screen">
+<div class="page">
 
-            <div class="welcome-card">
+    <div class="welcome-container">
 
-                <img
-                    src="logo.png"
-                    class="welcome-logo"
-                    alt="Logo"
+        <div class="card welcome-card">
+
+
+            <img
+                src="logo.png"
+                class="welcome-logo"
+            >
+
+
+            <span class="eyebrow">
+                BENVENUTO
+            </span>
+
+
+            <h1>
+                Crea il tuo profilo
+            </h1>
+
+
+            <p>
+                Inserisci il tuo nome per iniziare
+                a costruire il tuo percorso.
+            </p>
+
+
+
+            <form
+                onsubmit="saveUserName(event)"
+            >
+
+                <input
+                    id="username-input"
+                    class="input"
+                    type="text"
+                    placeholder="Il tuo nome"
+                    maxlength="30"
+                    required
                 >
 
-                <span class="eyebrow">
-                    BENVENUTO
-                </span>
 
-                <h1>
-                    Iniziamo.
-                </h1>
+                <button
+                    class="primary-button full-width"
+                    type="submit"
+                >
+                    Continua
+                </button>
 
-                <p>
-                    Prima di iniziare, dicci come vuoi essere chiamato.
-                </p>
 
-                <form onsubmit="saveUserName(event)">
+            </form>
 
-                    <input
-                        id="username-input"
-                        type="text"
-                        maxlength="30"
-                        placeholder="Il tuo nome"
-                        autocomplete="given-name"
-                        required
-                    >
-
-                    <button
-                        type="submit"
-                    >
-                        Continua
-                    </button>
-
-                </form>
-
-            </div>
 
         </div>
 
-    `;
+    </div>
+
+</div>
+
+`;
 
     setTimeout(() => {
 

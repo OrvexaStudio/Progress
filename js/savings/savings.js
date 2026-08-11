@@ -221,30 +221,55 @@ function renderSavingsGoal(goal) {
 
             <div class="savings-card-actions">
 
-                <button
-                    class="secondary-button"
-                    onclick="
-                        openAddMoneyModal(
-                            '${goal.id}'
-                        )
-                    "
-                >
-                    + Aggiungi soldi
-                </button>
+    <button
+        class="secondary-button"
+        onclick="
+            openAddMoneyModal(
+                '${goal.id}'
+            )
+        "
+    >
+        + Aggiungi soldi
+    </button>
 
+    <button
+        class="secondary-button"
+        onclick="
+            openSavingsDetails(
+                '${goal.id}'
+            )
+        "
+    >
+        Dettagli
+    </button>
 
-                <button
-                    class="secondary-button"
-                    onclick="
-                        openSavingsDetails(
-                            '${goal.id}'
-                        )
-                    "
-                >
-                    Dettagli
-                </button>
+</div>
 
-            </div>
+<div class="savings-management-actions">
+
+    <button
+        class="text-button"
+        onclick="
+            openSavingsEditModal(
+                '${goal.id}'
+            )
+        "
+    >
+        Modifica
+    </button>
+
+    <button
+        class="text-button danger-text"
+        onclick="
+            deleteSavingsGoal(
+                '${goal.id}'
+            )
+        "
+    >
+        Elimina
+    </button>
+
+</div>
 
         </article>
 

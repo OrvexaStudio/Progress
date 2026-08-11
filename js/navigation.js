@@ -89,6 +89,13 @@ if (page === "activity") {
 
     return;
 }
+    if (page === "settings") {
+
+    renderSettingsPage();
+
+    return;
+
+}
 
     content.innerHTML = `
 

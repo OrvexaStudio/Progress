@@ -995,65 +995,69 @@ function renderDeposits(goal) {
                                                     "
                                                 ></div>
 
-                                                <div
-                                                    class="
-                                                        activity-content
-                                                    "
-                                                >
+                                               <div
+    class="activity-content"
+>
 
-                                                    <div
-                                                        class="
-                                                            activity-name
-                                                        "
-                                                    >
-                                                        + ${formatCurrency(
-                                                            deposit.amount
-                                                        )}
-                                                    </div>
+    <div
+        class="activity-name"
+    >
+        + ${formatCurrency(
+            deposit.amount
+        )}
+    </div>
 
-                                                    <div
-                                                        class="
-                                                            activity-time
-                                                        "
-                                                    >
-                                                        ${
-                                                            escapeHTML(
-                                                                deposit.note ||
-                                                                "Risparmio"
-                                                            )
-                                                        }
-                                                        ·
-                                                        ${
-                                                            formatDate(
-                                                                deposit.date
-                                                            )
-                                                        }
-                                                    </div>
 
-                                                </div>
+    <div
+        class="activity-time"
+    >
+        ${
+            escapeHTML(
+                deposit.note ||
+                "Risparmio"
+            )
+        }
 
-                                            </div>
+        ·
 
-                                        `
-                                    )
-                                    .join("")
-                            }
+        ${
+            formatDate(
+                deposit.date
+            )
+        }
+    </div>
 
-                        </div>
-                    `
-                    : `
-                        <div class="empty-state">
 
-                            <strong>
-                                Nessun versamento
-                            </strong>
+    <div class="activity-actions">
 
-                            Inizia a mettere da parte
-                            qualcosa per questo obiettivo.
+        <button
+            class="text-button"
+            onclick="
+                editDeposit(
+                    '${goal.id}',
+                    '${deposit.id}'
+                )
+            "
+        >
+            Modifica
+        </button>
 
-                        </div>
-                    `
-            }
+
+        <button
+            class="text-button danger-text"
+            onclick="
+                deleteDeposit(
+                    '${goal.id}',
+                    '${deposit.id}'
+                )
+            "
+        >
+            Elimina
+        </button>
+
+    </div>
+
+</div>
 
         </section>
 
@@ -1373,5 +1377,117 @@ function renderEmptySavings() {
         </div>
 
     `;
+
+}
+
+function deleteDeposit(goalId, depositId) {
+
+    if(
+        !confirm(
+            "Eliminare questo versamento?"
+        )
+    ) return;
+
+
+    const data = loadData();
+
+
+    const goal =
+        data.savings.find(
+            item => item.id === goalId
+        );
+
+
+    if(!goal) return;
+
+
+    const deposit =
+        goal.deposits.find(
+            item => item.id === depositId
+        );
+
+
+    if(!deposit) return;
+
+
+    goal.saved -= deposit.amount;
+
+
+    goal.deposits =
+        goal.deposits.filter(
+            item =>
+            item.id !== depositId
+        );
+
+
+    saveData(data);
+
+    openSavingsDetails(goalId);
+
+}
+
+function editDeposit(goalId, depositId) {
+
+    const data = loadData();
+
+
+    const goal =
+        data.savings.find(
+            item => item.id === goalId
+        );
+
+
+    if(!goal) return;
+
+
+    const deposit =
+        goal.deposits.find(
+            item => item.id === depositId
+        );
+
+
+    if(!deposit) return;
+
+
+    const amount =
+        prompt(
+            "Modifica importo:",
+            deposit.amount
+        );
+
+
+    if(!amount || Number(amount) <= 0)
+        return;
+
+
+    const note =
+        prompt(
+            "Modifica nota:",
+            deposit.note || ""
+        );
+
+
+    const difference =
+        Number(amount) - deposit.amount;
+
+
+    goal.saved += difference;
+
+
+    if(goal.saved < 0)
+        goal.saved = 0;
+
+
+    deposit.amount =
+        Number(amount);
+
+
+    deposit.note =
+        note.trim();
+
+
+    saveData(data);
+
+    openSavingsDetails(goalId);
 
 }

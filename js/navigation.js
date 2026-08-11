@@ -76,6 +76,13 @@ function renderPage(page) {
 
         return;
     }
+   
+    if (page === "savings") {
+
+    renderSavingsPage();
+
+    return;
+}
 
 
     content.innerHTML = `

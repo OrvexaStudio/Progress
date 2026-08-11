@@ -9,27 +9,26 @@ const pageTitles = {
 
 function initializeNavigation() {
 
-    const buttons =
-        document.querySelectorAll(".nav-item");
+    const buttons = document.querySelectorAll(".nav-item");
 
     buttons.forEach(button => {
 
         button.addEventListener("click", () => {
 
-            const page =
-                button.dataset.page;
+            const page = button.dataset.page;
 
             navigateTo(page);
+
         });
 
     });
+
 }
 
 
 function navigateTo(page) {
 
-    const buttons =
-        document.querySelectorAll(".nav-item");
+    const buttons = document.querySelectorAll(".nav-item");
 
     buttons.forEach(button => {
 
@@ -41,11 +40,14 @@ function navigateTo(page) {
     });
 
 
-    document.querySelector("#page-title").textContent =
+    const title =
         pageTitles[page] || "Progress";
+
+    document.querySelector("#page-title").textContent = title;
 
 
     renderPage(page);
+
 }
 
 
@@ -55,19 +57,24 @@ function renderPage(page) {
         document.querySelector("#app-content");
 
 
+    if (!content) {
+        return;
+    }
+
+
     if (page === "dashboard") {
 
         renderDashboard();
-        return;
 
+        return;
     }
 
 
     if (page === "goals") {
 
         renderGoalsPage();
-        return;
 
+        return;
     }
 
 
@@ -82,7 +89,7 @@ function renderPage(page) {
                 </div>
 
                 <h2>
-                    ${pageTitles[page]}
+                    ${pageTitles[page] || "Progress"}
                 </h2>
 
                 <p>
@@ -95,33 +102,7 @@ function renderPage(page) {
         </div>
 
     `;
-}
 
-
-    content.innerHTML = `
-
-        <div class="page placeholder-page">
-
-            <div>
-
-                <div class="placeholder-icon">
-                    ${getPageIcon(page)}
-                </div>
-
-                <h2>
-                    ${pageTitles[page]}
-                </h2>
-
-                <p>
-                    Questa sezione verrà costruita
-                    nel prossimo step.
-                </p>
-
-            </div>
-
-        </div>
-
-    `;
 }
 
 
@@ -134,5 +115,7 @@ function getPageIcon(page) {
         settings: "⚙"
     };
 
+
     return icons[page] || "•";
+
 }

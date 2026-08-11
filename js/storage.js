@@ -76,6 +76,13 @@ function saveData(data) {
         STORAGE_KEY,
         JSON.stringify(data)
     );
+
+
+    // aggiorna tutta l'app in tempo reale
+    window.dispatchEvent(
+        new Event("dataUpdated")
+    );
+
 }
 
 

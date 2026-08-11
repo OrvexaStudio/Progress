@@ -29,7 +29,6 @@ function renderGoalsPage() {
 
             </div>
 
-
             <div class="goals-grid">
 
                 ${

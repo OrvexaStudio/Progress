@@ -6,43 +6,11 @@ const defaultData = {
     name: ""
 },
 
-    goals: [
-        {
-            id: "pilot-goal",
-            title: "Diventare pilota",
-            description: "Costruire il mio percorso verso il cockpit",
-            icon: "✈️",
-            progress: 37,
-            hours: 126,
-            milestones: 42
-        }
-    ],
+    goals: [],
 
-    savings: [
-        {
-            id: "iphone-goal",
-            title: "Nuovo iPhone",
-            icon: "📱",
-            target: 1199,
-            saved: 340,
-            deadline: "2027-05-23"
-        }
-    ],
+    savings: [],
 
-    activities: [
-        {
-            id: 1,
-            title: "Studio di matematica",
-            duration: 45,
-            date: new Date().toISOString()
-        },
-        {
-            id: 2,
-            title: "Ripasso aviazione",
-            duration: 30,
-            date: new Date(Date.now() - 86400000).toISOString()
-        }
-    ]
+    activities: []
 };
 
 

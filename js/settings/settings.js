@@ -97,10 +97,8 @@ function renderSettingsPage() {
                     <button
                         class="settings-row"
                         onclick="
-                            showComingSoon(
-                                'Aspetto'
-                            )
-                        "
+    openAppearanceSettings()
+"
                     >
 
                         <div>
@@ -346,10 +344,256 @@ function getInitials(name) {
 }
 
 
-function showComingSoon(section) {
+function openAppearanceSettings() {
 
-    alert(
-        `${section}: questa funzione arriverà presto.`
+    let container =
+        document.querySelector(
+            "#settings-modal-container"
+        );
+
+
+    if (!container) {
+
+        container =
+            document.createElement("div");
+
+        container.id =
+            "settings-modal-container";
+
+        document.body.appendChild(
+            container
+        );
+
+    }
+
+
+    const current =
+        localStorage.getItem(
+            "progress_theme"
+        ) || "system";
+
+
+    container.innerHTML = `
+
+        <div
+            class="modal-backdrop"
+            onclick="closeSettingsModal(event)"
+        >
+
+            <div
+                class="modal appearance-modal"
+                onclick="event.stopPropagation()"
+            >
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            ASPETTO
+                        </span>
+
+                        <h2>
+                            Come vuoi vedere Progress?
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="modal-close"
+                        onclick="
+                            closeSettingsModal()
+                        "
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div class="theme-options">
+
+                    <button
+                        class="
+                            theme-option
+                            ${
+                                current === "light"
+                                    ? "active"
+                                    : ""
+                            }
+                        "
+                        onclick="
+                            setProgressTheme('light')
+                        "
+                    >
+
+                        <div class="theme-preview light-preview">
+
+                            <div class="preview-sidebar"></div>
+
+                            <div class="preview-content">
+
+                                <div></div>
+                                <div></div>
+                                <div></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="theme-option-text">
+
+                            <strong>
+                                Chiaro
+                            </strong>
+
+                            <span>
+                                Sempre chiaro
+                            </span>
+
+                        </div>
+
+
+                        <span class="theme-check">
+                            ✓
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="
+                            theme-option
+                            ${
+                                current === "dark"
+                                    ? "active"
+                                    : ""
+                            }
+                        "
+                        onclick="
+                            setProgressTheme('dark')
+                        "
+                    >
+
+                        <div class="theme-preview dark-preview">
+
+                            <div class="preview-sidebar"></div>
+
+                            <div class="preview-content">
+
+                                <div></div>
+                                <div></div>
+                                <div></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="theme-option-text">
+
+                            <strong>
+                                Scuro
+                            </strong>
+
+                            <span>
+                                Più riposante di notte
+                            </span>
+
+                        </div>
+
+
+                        <span class="theme-check">
+                            ✓
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="
+                            theme-option
+                            ${
+                                current === "system"
+                                    ? "active"
+                                    : ""
+                            }
+                        "
+                        onclick="
+                            setProgressTheme('system')
+                        "
+                    >
+
+                        <div class="theme-preview system-preview">
+
+                            <div class="preview-half"></div>
+
+                            <div class="preview-half"></div>
+
+                        </div>
+
+
+                        <div class="theme-option-text">
+
+                            <strong>
+                                Sistema
+                            </strong>
+
+                            <span>
+                                Segue le impostazioni
+                                del dispositivo
+                            </span>
+
+                        </div>
+
+
+                        <span class="theme-check">
+                            ✓
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+function setProgressTheme(theme) {
+
+    localStorage.setItem(
+        "progress_theme",
+        theme
     );
+
+
+    applyProgressTheme();
+
+
+    openAppearanceSettings();
+
+}
+
+
+function applyProgressTheme() {
+
+    const theme =
+        localStorage.getItem(
+            "progress_theme"
+        ) || "system";
+
+
+    document.documentElement
+        .setAttribute(
+            "data-theme",
+            theme
+        );
 
 }

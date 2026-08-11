@@ -88,28 +88,36 @@ function showWelcomeScreen() {
 }
 
 
-function saveUserName(event) {
+function saveUserName(event){
 
     event.preventDefault();
+
 
     const input =
         document.querySelector(
             "#username-input"
         );
 
+
     const name =
         input.value.trim();
 
-    if (!name) {
+
+    if(!name){
         return;
     }
 
-    localStorage.setItem(
-        "app_user_name",
-        name
-    );
 
-    location.reload();
+    const data = loadData();
+
+
+    data.profile.name = name;
+
+
+    saveData(data);
+
+
+    window.location.reload();
 
 }
 

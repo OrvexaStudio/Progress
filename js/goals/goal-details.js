@@ -701,3 +701,124 @@ function deleteMilestone(goalId, milestoneId) {
     openGoalDetails(goalId);
 
 }
+
+function deleteGoalActivity(activityId) {
+
+    if(
+        !confirm(
+            "Eliminare questa attività?"
+        )
+    ) return;
+
+
+    const data = loadData();
+
+
+    let goalFound = null;
+
+
+    data.goals.forEach(goal => {
+
+        if(!goal.activities) return;
+
+
+        const exists =
+            goal.activities.find(
+                activity => activity.id === activityId
+            );
+
+
+        if(exists){
+
+            goalFound = goal;
+
+            goal.activities =
+                goal.activities.filter(
+                    activity =>
+                    activity.id !== activityId
+                );
+
+        }
+
+    });
+
+
+    if(!goalFound) return;
+
+
+    updateGoalProgress(goalFound);
+
+    saveData(data);
+
+    openGoalDetails(goalFound.id);
+
+}
+
+function editGoalActivity(activityId) {
+
+    const data = loadData();
+
+
+    let goalFound = null;
+    let activityFound = null;
+
+
+    data.goals.forEach(goal => {
+
+        if(!goal.activities) return;
+
+
+        const activity =
+            goal.activities.find(
+                item => item.id === activityId
+            );
+
+
+        if(activity){
+
+            goalFound = goal;
+            activityFound = activity;
+
+        }
+
+    });
+
+
+    if(!activityFound) return;
+
+
+    const title =
+        prompt(
+            "Modifica attività:",
+            activityFound.title
+        );
+
+
+    if(!title || !title.trim()) return;
+
+
+    const duration =
+        prompt(
+            "Modifica durata (minuti):",
+            activityFound.duration
+        );
+
+
+    if(!duration || Number(duration) <= 0) return;
+
+
+    activityFound.title =
+        title.trim();
+
+
+    activityFound.duration =
+        Number(duration);
+
+
+    updateGoalProgress(goalFound);
+
+    saveData(data);
+
+    openGoalDetails(goalFound.id);
+
+}

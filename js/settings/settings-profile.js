@@ -177,11 +177,61 @@ function saveProfile(event) {
 
 
     closeSettingsModal();
-
+updateGlobalProfile();
     renderSettingsPage();
 
 }
 
+function updateGlobalProfile() {
+
+    const profile =
+        getProfile();
+
+
+    const avatar =
+        document.querySelector(
+            ".profile .avatar"
+        );
+
+
+    const name =
+        document.querySelector(
+            ".profile strong"
+        );
+
+
+    const subtitle =
+        document.querySelector(
+            ".profile span"
+        );
+
+
+    if (avatar) {
+
+        avatar.textContent =
+            getInitials(
+                profile.name
+            );
+
+    }
+
+
+    if (name) {
+
+        name.textContent =
+            profile.name;
+
+    }
+
+
+    if (subtitle) {
+
+        subtitle.textContent =
+            profile.subtitle;
+
+    }
+
+}
 
 function closeSettingsModal(event) {
 

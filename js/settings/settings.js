@@ -387,7 +387,7 @@ function renderSettingsPage() {
 </span>
 
 <small>
-    Versione 1.0.0
+    Versione 1.1.0
 </small>
 
 <button

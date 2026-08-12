@@ -2840,4 +2840,33 @@ translateY(0);
 
 }
 
+    .tutorial-card {
+
+    padding: 40px;
+
+}
+
+
+.tutorial-card h1 {
+
+    margin-top: 20px;
+    margin-bottom: 16px;
+
+}
+
+
+.tutorial-card p {
+
+    line-height: 1.6;
+    margin-bottom: 30px;
+
+}
+
+
+.tutorial-card .eyebrow {
+
+    display:block;
+    margin-bottom:15px;
+
+}
 }

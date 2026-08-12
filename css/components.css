@@ -389,3 +389,29 @@
     line-height: 1.4;
 
 }
+
+.streak-status {
+
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+
+}
+
+
+.streak-message {
+
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+
+}
+
+
+.streak-badge {
+
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 600;
+
+}

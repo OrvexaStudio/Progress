@@ -209,19 +209,36 @@ function renderGoalCard(goal) {
                 </div>
 
 
-                <div class="stat">
+<div class="activity-stat">
 
-                    <div class="stat-value">
-                        +31%
-                    </div>
+    <strong>
+        ${
+            improvement === null
+            ?
+            "—"
+            :
+            (improvement > 0 ? "+" : "")
+            + improvement + "%"
+        }
+    </strong>
 
-                    <div class="stat-label">
-                        Miglioramento
-                    </div>
 
-                </div>
+    <span>
+        Miglioramento
+    </span>
 
-            </div>
+
+    <small>
+        ${
+            improvement === null
+            ?
+            "Inizia il tuo percorso"
+            :
+            "Rispetto alla settimana precedente"
+        }
+    </small>
+
+</div>
 
         </article>
 
@@ -377,9 +394,64 @@ function renderSavingsCard(goal) {
     `;
 }
 
+function calculateImprovement(activities) {
+
+    if (!activities || activities.length < 2) {
+
+        return null;
+
+    }
+
+
+    const now = new Date();
+
+
+    const currentStart =
+        new Date(
+            now.getTime() - 7 * 24 * 60 * 60 * 1000
+        );
+
+
+    const previousStart =
+        new Date(
+            now.getTime() - 14 * 24 * 60 * 60 * 1000
+        );
+
+
+
+    const current =
+        activities.filter(
+            activity =>
+                new Date(activity.date) >= currentStart
+        ).length;
+
+
+
+    const previous =
+        activities.filter(
+            activity =>
+                new Date(activity.date) >= previousStart &&
+                new Date(activity.date) < currentStart
+        ).length;
+
+
+
+    if (previous === 0) {
+
+        return null;
+
+    }
+
+
+    return Math.round(
+        ((current - previous) / previous) * 100
+    );
+
+}
 
 function renderActivityCard(activities) {
-
+const improvement =
+    calculateImprovement(activities);
     return `
 
         <article class="card dashboard-grid-full">

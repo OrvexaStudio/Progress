@@ -12,7 +12,7 @@ const defaultData = {
 
     savings: [],
 
-    activities: []
+    activities: [],
     timeline: []
 };
 

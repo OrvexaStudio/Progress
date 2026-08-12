@@ -656,19 +656,6 @@ function renderStreakCard(){
         ${message}
     </p>
 
-
-    ${
-        recordMessage
-        ?
-        `
-        <div class="streak-badge">
-            ${recordMessage}
-        </div>
-        `
-        :
-        ""
-    }
-
 </div>
 
         <div class="streak-number">
@@ -702,7 +689,41 @@ ${
 
         </div>
 
+${
+    recordMessage
+    ?
+    `
+    <div class="streak-badge">
+        ${recordMessage}
+    </div>
+    `
+    :
+    ""
+}
 
+
+<div class="streak-record">
+
+    Record personale:
+
+    <strong>
+        ${streak.record}
+    </strong>
+
+    ${
+        streak.record === 1
+        ? "giorno"
+        : "giorni"
+    }
+
+</div>
+
+
+<small class="streak-info">
+
+    La streak aumenta quando completi almeno un'attività nella giornata.
+
+</small>
 
 <small class="streak-info">
 

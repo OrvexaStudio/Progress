@@ -318,7 +318,8 @@
 
 .streak-card {
 
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -378,8 +379,11 @@
 
 .streak-info {
 
+    margin-top: auto;
+    padding-top: 20px;
+
     display: block;
-    margin-top: 12px;
+
     font-size: 13px;
     opacity: .55;
     line-height: 1.4;

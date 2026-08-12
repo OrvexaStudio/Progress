@@ -21,25 +21,72 @@ function loadData() {
 
     const saved = localStorage.getItem(STORAGE_KEY);
 
+
     if (!saved) {
+
         saveData(defaultData);
+
         return structuredClone(defaultData);
+
     }
+
 
     try {
-        return JSON.parse(saved);
+
+        const data = JSON.parse(saved);
+
+
+        if (!data.goals) {
+            data.goals = [];
+        }
+
+
+        if (!data.savings) {
+            data.savings = [];
+        }
+
+
+        if (!data.activities) {
+            data.activities = [];
+        }
+
+
+        if (!data.timeline) {
+            data.timeline = [];
+        }
+
+
+        if (!data.profile) {
+
+            data.profile = {
+                name: ""
+            };
+
+        }
+
+
+        saveData(data);
+
+
+        return data;
+
+
     } catch (error) {
-        console.error("Errore nel caricamento dei dati:", error);
+
+        console.error(
+            "Errore nel caricamento dei dati:",
+            error
+        );
+
 
         saveData(defaultData);
 
-        return structuredClone(defaultData);
-    }
-    if (!data.activities) {
-    data.activities = [];
-}
-}
 
+        return structuredClone(defaultData);
+
+    }
+
+}
 
 function saveData(data) {
 

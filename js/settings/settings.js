@@ -291,23 +291,112 @@ function renderSettingsPage() {
                 </div>
 
             </section>
+<!-- STATISTICHE PERSONALI -->
 
+<section class="settings-section">
+
+    <span class="eyebrow">
+        STATISTICHE PERSONALI
+    </span>
+
+
+    <div class="card stats-personal-grid">
+
+        ${
+            (() => {
+
+                const stats = getPersonalStats();
+
+                return `
+
+                <div class="personal-stat">
+
+                    <span>
+                        Da quando usi Progressi
+                    </span>
+
+                    <strong>
+                        ${stats.days}
+                    </strong>
+
+                    <small>
+                        Giorni attivi
+                    </small>
+
+                </div>
+
+
+                <div class="personal-stat">
+
+                    <strong>
+                        ${stats.activities}
+                    </strong>
+
+                    <small>
+                        Attività completate
+                    </small>
+
+                </div>
+
+
+                <div class="personal-stat">
+
+                    <strong>
+                        ${stats.hours}h
+                    </strong>
+
+                    <small>
+                        Tempo investito
+                    </small>
+
+                </div>
+
+
+                <div class="personal-stat">
+
+                    <strong>
+                        ${stats.goals}
+                    </strong>
+
+                    <small>
+                        Obiettivi creati
+                    </small>
+
+                </div>
+
+                `;
+
+            })()
+        }
+
+
+    </div>
+
+</section>
 
             <!-- INFO -->
 
             <section class="settings-about">
 
                 <strong>
-                    Progress
-                </strong>
+    Progress
+</strong>
 
-                <span>
-                    Il tuo spazio per crescere.
-                </span>
+<span>
+    Sviluppata con cura
+</span>
 
-                <small>
-                    Versione 1.0
-                </small>
+<small>
+    Versione 1.0.0
+</small>
+
+<span>
+    Privacy
+</span>
+
+<span>
+    Termini di utilizzo
+</span>
 
             </section>
 
@@ -595,5 +684,72 @@ function applyProgressTheme() {
             "data-theme",
             theme
         );
+
+}
+
+function getPersonalStats(){
+
+    const data =
+        loadData();
+
+
+    const activities =
+        data.activities || [];
+
+
+    const goals =
+        data.goals || [];
+
+
+
+    const completedActivities =
+        activities.filter(
+            activity =>
+                activity.completed !== false
+        ).length;
+
+
+
+    const totalMinutes =
+        activities.reduce(
+            (total, activity) =>
+                total + Number(activity.duration || 0),
+            0
+        );
+
+
+    const totalHours =
+        Math.floor(
+            totalMinutes / 60
+        );
+
+
+
+    const activeDays =
+        new Set(
+            activities.map(
+                activity =>
+                    new Date(activity.date)
+                    .toDateString()
+            )
+        ).size;
+
+
+
+    return {
+
+        days:
+            activeDays,
+
+        activities:
+            completedActivities,
+
+        hours:
+            totalHours,
+
+        goals:
+            goals.length
+
+    };
 
 }

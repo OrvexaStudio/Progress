@@ -14,12 +14,12 @@ const FILES_TO_CACHE = [
 
 
     // FILE PRINCIPALI
-    "./app.js",
-    "./dashboard.js",
-    "./navigation.js",
-    "./realtime.js",
-    "./storage.js",
-    "./utils.js",
+"./js/app.js",
+"./js/dashboard.js",
+"./js/navigation.js",
+"./js/realtime.js",
+"./js/storage.js",
+"./js/utils.js",
 
 
     // PAGINE

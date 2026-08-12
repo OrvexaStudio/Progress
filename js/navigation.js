@@ -3,7 +3,7 @@ const pageTitles = {
     goals: "Obiettivi",
     savings: "Risparmi",
     activity: "Attività",
-    settings: "Impostazioni"
+    settings: "Impostazioni",
     timeline: renderTimelinePage,
 };
 

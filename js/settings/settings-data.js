@@ -77,9 +77,9 @@ function importProgressData(event) {
 
 
             localStorage.setItem(
-                "progress_data",
-                JSON.stringify(imported)
-            );
+    "progress_app_data",
+    JSON.stringify(imported)
+);
 
 
             alert(
@@ -133,8 +133,8 @@ function deleteAllProgressData() {
 
 
     localStorage.removeItem(
-        "progress_data"
-    );
+    "progress_app_data"
+);
 
 
     location.reload();

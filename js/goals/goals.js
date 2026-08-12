@@ -233,8 +233,9 @@ function openGoalModal(goalId = null) {
 
                         Nome obiettivo
 
-                        <input
-                            id="goal-title"
+                        value="${
+    localStorage.getItem("tutorial_goal_title") || ""
+}"
                             type="text"
                             required
                             maxlength="60"

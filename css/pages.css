@@ -3132,3 +3132,70 @@ translateY(0);
     }
 
 }
+
+.legal-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+.legal-card h3{
+
+    font-size:16px;
+
+    margin-top:10px;
+
+}
+
+
+.legal-card p{
+
+    color:var(--text-secondary);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+.text-button{
+
+    background:none;
+
+    border:0;
+
+    cursor:pointer;
+
+}
+
+.legal-card{
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+}
+
+
+.legal-card h3{
+
+    font-size:16px;
+
+}
+
+
+.legal-card p{
+
+    color:var(--text-secondary);
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}

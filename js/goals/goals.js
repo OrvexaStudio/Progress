@@ -403,6 +403,9 @@ function saveGoal(event, goalId) {
 
 
     saveData(data);
+    localStorage.removeItem(
+    "tutorial_goal_title"
+);
 
     closeGoalModal();
 

@@ -315,3 +315,56 @@
     opacity: .7;
 
 }
+
+.streak-card {
+
+    text-align: center;
+
+}
+
+
+.streak-number {
+
+    font-size: 48px;
+    font-weight: 800;
+    margin: 20px 0 10px;
+
+}
+
+
+.streak-number span {
+
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: .65;
+
+}
+
+
+.streak-message {
+
+    margin: 10px 0;
+    font-size: 16px;
+
+}
+
+
+.streak-record {
+
+    font-size: 14px;
+    opacity: .75;
+
+}
+
+
+.streak-badge {
+
+    margin-top: 15px;
+    padding: 8px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+
+}

@@ -226,6 +226,7 @@ function nextTutorialStep(){
 
 }
 
+
 function openTutorialGoalForm(){
 
     localStorage.setItem(
@@ -240,51 +241,7 @@ function openTutorialGoalForm(){
 
 
 
-function createTutorialGoal(){
-
-    const title =
-        document
-        .querySelector("#tutorial-goal-title")
-        .value
-        .trim();
-
-
-    if(!title){
-        return;
-    }
-
-
-    // salva temporaneamente il titolo inserito
-    localStorage.setItem(
-        "tutorial_goal_title",
-        title
-    );
-
-
-    // apre il vero form obiettivi
-    openGoalModal();
-
-}
-
-
-localStorage.setItem(
-    "progress_data",
-    JSON.stringify(data)
-);
-
-
-tutorialStep = 2;
-
-renderTutorialStep();
-
-}
-
-
-
-
-
 function finishTutorial(){
-
 
     localStorage.setItem(
         "progress_tutorial_completed",
@@ -307,12 +264,10 @@ function finishTutorial(){
     }
 
 
-
     setTimeout(() => {
 
-    location.reload();
+        location.reload();
 
-},500);
-
+    },500);
 
 }

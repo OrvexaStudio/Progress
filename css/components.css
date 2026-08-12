@@ -366,16 +366,7 @@
 }
 
 
-.streak-badge {
 
-    margin-top: 15px;
-    padding: 8px 14px;
-    border-radius: 20px;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-
-}
 
 .streak-info {
 
@@ -410,8 +401,10 @@
 
 .streak-badge {
 
-    margin-top: 8px;
-    font-size: 13px;
-    font-weight: 600;
+.streak-status,
+.streak-badge,
+.streak-record {
+
+    width: 100%;
 
 }

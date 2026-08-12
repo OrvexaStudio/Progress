@@ -231,21 +231,23 @@ function openGoalModal(goalId = null) {
 
                     <label>
 
-                        Nome obiettivo
+    Nome obiettivo
 
-                        value="${
-    localStorage.getItem("tutorial_goal_title") || ""
-}"
-                            type="text"
-                            required
-                            maxlength="60"
-                            placeholder="Es. Diventare pilota"
-                            value="${escapeHTML(
-                                goal?.title || ""
-                            )}"
-                        >
+    <input
+        id="goal-title"
+        class="input"
+        type="text"
+        required
+        maxlength="60"
+        placeholder="Es. Diventare pilota"
+        value="${
+            escapeHTML(
+                localStorage.getItem("tutorial_goal_title") || goal?.title || ""
+            )
+        }"
+    >
 
-                    </label>
+</label>
 
 
                     <label>

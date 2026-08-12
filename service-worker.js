@@ -1,4 +1,4 @@
-const CACHE_NAME = "progressi-v3";
+const CACHE_NAME = "progressi-v4";
 
 
 const FILES_TO_CACHE = [
@@ -68,8 +68,18 @@ event => {
         caches.open(CACHE_NAME)
         .then(cache => {
 
- return cache.addAll(
-    FILES_TO_CACHE
+return Promise.all(
+    FILES_TO_CACHE.map(file => {
+
+        return fetch(file)
+            .then(() => {
+                console.log("OK:", file);
+            })
+            .catch(() => {
+                console.error("ERRORE FILE:", file);
+            });
+
+    })
 );
 
         })

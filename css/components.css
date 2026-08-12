@@ -298,24 +298,6 @@
     }
 }
 
-.streak-number {
-
-    font-size: 42px;
-    font-weight: 800;
-    margin: 15px 0;
-
-}
-
-
-.streak-number span {
-
-    display: block;
-    font-size: 15px;
-    font-weight: 500;
-    opacity: .7;
-
-}
-
 .streak-card {
 
     display: flex;
@@ -324,27 +306,31 @@
 }
 
 
-.streak-card .card-header {
+.streak-main {
 
-    text-align: left;
+    text-align: center;
+    padding: 24px 0;
 
 }
 
 
-.streak-number {
+.streak-value {
 
-    font-size: 48px;
+    font-size: 52px;
     font-weight: 800;
-    margin: 20px 0 10px;
+    line-height: 1;
 
 }
 
 
-.streak-number span {
+.streak-value span {
 
     display: block;
+    margin-top: 8px;
+
     font-size: 15px;
     font-weight: 500;
+
     opacity: .65;
 
 }
@@ -352,59 +338,53 @@
 
 .streak-message {
 
-    margin: 10px 0;
-    font-size: 16px;
+    margin: 18px 0 0;
 
-}
-
-
-.streak-record {
-
-    font-size: 14px;
-    opacity: .75;
-
-}
-
-
-
-
-.streak-info {
-
-    margin-top: auto;
-    padding-top: 20px;
-
-    display: block;
-
-    font-size: 13px;
-    opacity: .55;
-    line-height: 1.4;
-
-}
-
-.streak-status {
-
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 20px;
-
-}
-
-
-.streak-message {
-
-    margin: 0;
     font-size: 15px;
     font-weight: 600;
 
 }
 
 
-.streak-badge {
 
-.streak-status,
-.streak-badge,
+.streak-footer {
+
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+
 .streak-record {
 
-    width: 100%;
+    font-size: 14px;
+
+}
+
+
+
+.streak-new-record {
+
+    font-size: 14px;
+    font-weight: 600;
+
+}
+
+
+
+.streak-info {
+
+    margin-top: 8px;
+
+    font-size: 13px;
+
+    opacity: .55;
+
+    line-height: 1.4;
 
 }

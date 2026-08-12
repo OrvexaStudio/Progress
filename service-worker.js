@@ -1,4 +1,4 @@
-const CACHE_NAME = "progressi-v1";
+const CACHE_NAME = "progressi-v2";
 
 
 const FILES_TO_CACHE = [
@@ -7,9 +7,53 @@ const FILES_TO_CACHE = [
     "./index.html",
 
     "./style.css",
-    "./app.js",
+    "./manifest.json",
 
-    "./manifest.json"
+    // PAGINE PRINCIPALI
+    "./welcome.js",
+    "./tutorial.js",
+    "./privacy.js",
+    "./terms.js",
+
+
+    // CORE
+    "./js/app.js",
+    "./js/storage.js",
+    "./js/utils.js",
+    "./js/navigation.js",
+    "./js/realtime.js",
+
+
+    // DASHBOARD
+    "./js/dashboard.js",
+
+
+    // GOALS
+    "./js/goals/goal-progress.js",
+    "./js/goals/goal-details.js",
+    "./js/goals/goals.js",
+
+
+    // SAVINGS
+    "./js/savings/savings-calculator.js",
+    "./js/savings/savings-plan.js",
+    "./js/savings/savings.js",
+
+
+    // ACTIVITY
+    "./js/activity/activity-stats.js",
+    "./js/activity/activity-form.js",
+    "./js/activity/activity.js",
+
+
+    // SETTINGS
+    "./js/settings/settings-data.js",
+    "./js/settings/settings-profile.js",
+    "./js/settings/settings.js",
+
+
+    // IMMAGINI
+    "./logo.png"
 
 ];
 
@@ -31,6 +75,9 @@ event => {
         })
 
     );
+
+
+    self.skipWaiting();
 
 });
 
@@ -63,6 +110,9 @@ event => {
 
     );
 
+
+    self.clients.claim();
+
 });
 
 
@@ -73,10 +123,38 @@ event => {
 
     event.respondWith(
 
-        caches.match(event.request)
+        fetch(event.request)
+
         .then(response => {
 
-            return response || fetch(event.request);
+
+            const clone =
+                response.clone();
+
+
+            caches.open(CACHE_NAME)
+            .then(cache => {
+
+                cache.put(
+                    event.request,
+                    clone
+                );
+
+            });
+
+
+            return response;
+
+
+        })
+
+        .catch(() => {
+
+
+            return caches.match(
+                event.request
+            );
+
 
         })
 

@@ -650,7 +650,26 @@ function renderStreakCard(){
 
         </div>
 
+<div class="streak-status">
 
+    <p class="streak-message">
+        ${message}
+    </p>
+
+
+    ${
+        recordMessage
+        ?
+        `
+        <div class="streak-badge">
+            ${recordMessage}
+        </div>
+        `
+        :
+        ""
+    }
+
+</div>
 
         <div class="streak-number">
 
@@ -664,11 +683,7 @@ function renderStreakCard(){
 
 
 
-        <p class="streak-message">
-
-            ${message}
-
-        </p>
+        
 
 
 
@@ -690,9 +705,7 @@ ${
     recordMessage
     ?
     `
-    <div class="streak-badge">
-        ${recordMessage}
-    </div>
+   
     `
     :
     ""

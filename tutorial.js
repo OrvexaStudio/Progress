@@ -244,12 +244,9 @@ function createTutorialGoal(){
 
     const title =
         document
-        .querySelector(
-            "#tutorial-goal-title"
-        )
+        .querySelector("#tutorial-goal-title")
         .value
         .trim();
-
 
 
     if(!title){
@@ -257,46 +254,17 @@ function createTutorialGoal(){
     }
 
 
-
-    const data =
-        loadData();
-
-
-
-    if(!data.goals){
-
-        data.goals = [];
-
-    }
+    // salva temporaneamente il titolo inserito
+    localStorage.setItem(
+        "tutorial_goal_title",
+        title
+    );
 
 
+    // apre il vero form obiettivi
+    openGoalModal();
 
-    data.goals.push({
-
-        id:
-            crypto.randomUUID(),
-
-        title,
-
-        description:
-            "Creato durante la configurazione iniziale",
-
-        icon:
-            "",
-
-        progress:
-            0,
-
-        hours:
-            0,
-
-        milestones:
-            0,
-
-        createdAt:
-            new Date().toISOString()
-
-    });
+}
 
 
 localStorage.setItem(

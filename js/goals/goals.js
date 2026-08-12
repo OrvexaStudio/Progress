@@ -339,6 +339,7 @@ function closeGoalModal(event) {
 function saveGoal(event, goalId) {
 
     event.preventDefault();
+    console.log("SAVE GOAL CHIAMATA", goalId);
 
     const data = loadData();
 

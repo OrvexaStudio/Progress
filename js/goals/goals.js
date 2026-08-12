@@ -403,7 +403,7 @@ function saveGoal(event, goalId) {
 
 
     data.goals.push(newGoal);
-
+console.log("CREAZIONE OBIETTIVO TIMELINE:", title);
 
     addTimelineEvent({
 

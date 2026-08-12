@@ -51,7 +51,7 @@ function renderDashboard() {
 
 
                 ${renderActivityCard(data.activities || [])}
-
+                ${renderStreakCard()}
 
             </div>
 
@@ -573,3 +573,55 @@ window.addEventListener(
         renderDashboard();
     }
 );
+
+function renderStreakCard(){
+
+    const streak =
+        calculateStreak();
+
+
+    return `
+
+    <article class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="card-title">
+                    🔥 Streak
+                </div>
+
+                <div class="card-subtitle">
+                    La tua costanza
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="streak-number">
+
+            ${streak.current}
+
+            <span>
+                giorni consecutivi
+            </span>
+
+        </div>
+
+
+        <div class="stat-label">
+
+            Record personale:
+            ${streak.record} giorni
+
+        </div>
+
+
+    </article>
+
+    `;
+
+}

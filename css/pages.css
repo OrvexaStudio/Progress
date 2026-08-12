@@ -2837,7 +2837,7 @@ opacity:1;
 
 transform:
 translateY(0);
-
+}
 }
 
 .tutorial-card {
@@ -2901,5 +2901,21 @@ translateY(0);
 
 
 .tutorial-card #tutorial-content .primary-button {
+    margin-top: 10px;
+}
+
+.tutorial-card #tutorial-content h1 {
+    margin-bottom: 18px;
+}
+
+.tutorial-card #tutorial-content p {
+    margin-bottom: 25px;
+}
+
+.tutorial-card #tutorial-content input {
+    margin-bottom: 25px;
+}
+
+.tutorial-card #tutorial-content button {
     margin-top: 10px;
 }

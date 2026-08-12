@@ -158,7 +158,7 @@ function renderTimelineItem(event){
 
 
 function addTimelineEvent(event){
-
+console.log("ADD TIMELINE CHIAMATA:", event);
 
     const data =
         loadData();

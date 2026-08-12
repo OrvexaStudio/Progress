@@ -47,7 +47,7 @@ document.addEventListener(
         updateGlobalProfile();
 
         navigateTo("dashboard");
-
+        checkAppUpdate();
 
     }
 );

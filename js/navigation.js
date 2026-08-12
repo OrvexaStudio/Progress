@@ -4,7 +4,7 @@ const pageTitles = {
     savings: "Risparmi",
     activity: "Attività",
     settings: "Impostazioni",
-    timeline: renderTimelinePage
+    timeline: "Timeline"
 };
 
 
@@ -143,7 +143,7 @@ function getPageIcon(page) {
         goals: "◎",
         savings: "€",
         activity: "↗",
-        settings: "⚙"
+        settings: "⚙",
         timeline: "◷"
     };
 

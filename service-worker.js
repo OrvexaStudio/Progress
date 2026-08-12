@@ -9,7 +9,7 @@ const FILES_TO_CACHE = [
     // CSS
     "./css/base.css",
     "./css/components.css",
-    "./css/layout.jcss",
+    "./css/layout.css",
     "./css/pages.css",
 
 

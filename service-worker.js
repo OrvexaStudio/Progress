@@ -39,7 +39,7 @@ const FILES_TO_CACHE = [
     "./js/activity/activity-form.js",
     "./js/activity/activity-stats.js",
     "./js/activity/activity.js",
-
+    "./js/activity/streak.js",
 
     // GOALS
     "./js/goals/goal-details.js",

@@ -3057,3 +3057,7 @@ translateY(0);
     line-height:1.5;
 
 }
+
+.tutorial-success p + p {
+    margin-top: 15px;
+}

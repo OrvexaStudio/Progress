@@ -3001,3 +3001,12 @@ translateY(0);
     width: 100%;
 
 }
+
+.welcome-logo,
+.tutorial-logo {
+
+    border-radius: 22%;
+
+    object-fit: cover;
+
+}

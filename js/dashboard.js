@@ -628,113 +628,90 @@ function renderStreakCard(){
 
 
 
-    return `
+   return `
 
-    <article class="card streak-card">
+<article class="card streak-card">
 
 
-        <div class="card-header">
+    <div class="card-header">
 
-            <div>
+        <div>
 
-                <div class="card-title">
-                    Streak
-                </div>
-
-                <div class="card-subtitle">
-                    La tua costanza quotidiana
-                </div>
-
+            <div class="card-title">
+                Streak
             </div>
 
+            <div class="card-subtitle">
+                La tua costanza quotidiana
+            </div>
 
         </div>
 
-<div class="streak-status">
-
-    <p class="streak-message">
-        ${message}
-    </p>
-
-</div>
-
-        <div class="streak-number">
-
-            ${streak.current}
-
-            <span>
-                giorni consecutivi
-            </span>
-
-        </div>
-
-
-
-        
-
-
-
-        <div class="streak-record">
-
-            Record personale:
-<strong>
-    ${streak.record}
-</strong>
-
-${
-    streak.record === 1
-    ? "giorno"
-    : "giorni"
-}
-
-        </div>
-
-${
-    recordMessage
-    ?
-    `
-    <div class="streak-badge">
-        ${recordMessage}
     </div>
-    `
-    :
-    ""
-}
 
 
-<div class="streak-record">
+    <div class="streak-status">
 
-    Record personale:
+        <p class="streak-message">
+            ${message}
+        </p>
 
-    <strong>
-        ${streak.record}
-    </strong>
+    </div>
+
+
+    <div class="streak-number">
+
+        ${streak.current}
+
+        <span>
+            ${
+                streak.current === 1
+                ? "giorno consecutivo"
+                : "giorni consecutivi"
+            }
+        </span>
+
+    </div>
+
+
+    <div class="streak-record">
+
+        Record personale:
+
+        <strong>
+            ${streak.record}
+        </strong>
+
+        ${
+            streak.record === 1
+            ? "giorno"
+            : "giorni"
+        }
+
+    </div>
+
 
     ${
-        streak.record === 1
-        ? "giorno"
-        : "giorni"
+        recordMessage
+        ?
+        `
+        <div class="streak-badge">
+            ${recordMessage}
+        </div>
+        `
+        :
+        ""
     }
 
-</div>
+
+    <small class="streak-info">
+
+        La streak aumenta quando completi almeno un'attività nella giornata.
+
+    </small>
 
 
-<small class="streak-info">
+</article>
 
-    La streak aumenta quando completi almeno un'attività nella giornata.
-
-</small>
-
-<small class="streak-info">
-
-    La streak aumenta quando completi almeno un'attività nella giornata.
-
-</small>
-
-
-
-    </article>
-
-    `;
-
-}
+`;
+    

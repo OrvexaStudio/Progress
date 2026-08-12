@@ -638,7 +638,7 @@ function renderStreakCard(){
             <div>
 
                 <div class="card-title">
-                    🔥 Streak
+                    Streak
                 </div>
 
                 <div class="card-subtitle">

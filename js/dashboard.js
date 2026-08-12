@@ -580,9 +580,58 @@ function renderStreakCard(){
         calculateStreak();
 
 
+    let message = "";
+
+
+    if(streak.current === 0){
+
+        message =
+            "Inizia oggi il tuo percorso.";
+
+    }
+    else if(streak.current < 3){
+
+        message =
+            "Ottimo inizio, continua così!";
+
+    }
+    else if(streak.current < 7){
+
+        message =
+            "Stai costruendo una bella abitudine.";
+
+    }
+    else if(streak.current < 30){
+
+        message =
+            "🔥 Stai andando forte! Non fermarti.";
+
+    }
+    else if(streak.current >= 30){
+
+        message =
+            "🏆 Incredibile costanza. Hai creato un'abitudine.";
+
+    }
+
+
+
+    let recordMessage = "";
+
+
+    if(streak.current === streak.record && streak.current > 0){
+
+        recordMessage =
+            "⭐ Nuovo record personale!";
+
+    }
+
+
+
     return `
 
-    <article class="card">
+    <article class="card streak-card">
+
 
         <div class="card-header">
 
@@ -593,12 +642,14 @@ function renderStreakCard(){
                 </div>
 
                 <div class="card-subtitle">
-                    La tua costanza
+                    La tua costanza quotidiana
                 </div>
 
             </div>
 
+
         </div>
+
 
 
         <div class="streak-number">
@@ -612,12 +663,39 @@ function renderStreakCard(){
         </div>
 
 
-        <div class="stat-label">
+
+        <p class="streak-message">
+
+            ${message}
+
+        </p>
+
+
+
+        <div class="streak-record">
 
             Record personale:
-            ${streak.record} giorni
+            <strong>
+                ${streak.record}
+            </strong>
+            giorni
 
         </div>
+
+
+
+        ${
+            recordMessage
+            ?
+            `
+            <div class="streak-badge">
+                ${recordMessage}
+            </div>
+            `
+            :
+            ""
+        }
+
 
 
     </article>

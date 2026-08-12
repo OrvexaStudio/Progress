@@ -1,52 +1,62 @@
-const CACHE_NAME = "progressi-1.1.2";
+const CACHE_NAME = "progressi-cache-1.1.3";
+
 
 const FILES_TO_CACHE = [
 
     "./",
     "./index.html",
-    "./manifest.json",
+
+    // CSS
+    "./css/base.css",
+    "./css/components.css",
+    "./css/layout.jcss",
+    "./css/pages.css",
+
+
+    // FILE PRINCIPALI
+    "./app.js",
+    "./dashboard.js",
+    "./navigation.js",
+    "./realtime.js",
+    "./storage.js",
+    "./utils.js",
+
 
     // PAGINE
     "./welcome.js",
     "./tutorial.js",
     "./privacy.js",
     "./terms.js",
+    "./update.js",
 
-    // CSS
-    "./style.css",
 
-    // CORE
-    "./js/app.js",
-    "./js/storage.js",
-    "./js/utils.js",
-    "./js/navigation.js",
-    "./js/realtime.js",
+    // MANIFEST + LOGO
+    "./manifest.json",
+    "./logo.png",
 
-    // DASHBOARD
-    "./js/dashboard.js",
+
+    // ACTIVITY
+    "./js/activity/activity-form.js",
+    "./js/activity/activity-stats.js",
+    "./js/activity/activity.js",
+
 
     // GOALS
-    "./js/goals/goal-progress.js",
     "./js/goals/goal-details.js",
+    "./js/goals/goal-progress.js",
     "./js/goals/goals.js",
+
 
     // SAVINGS
     "./js/savings/savings-calculator.js",
     "./js/savings/savings-plan.js",
     "./js/savings/savings.js",
 
-    // ACTIVITY
-    "./js/activity/activity-stats.js",
-    "./js/activity/activity-form.js",
-    "./js/activity/activity.js",
 
     // SETTINGS
     "./js/settings/settings-data.js",
     "./js/settings/settings-profile.js",
-    "./js/settings/settings.js",
-
-    // IMMAGINI
-    "./logo.png"
+    "./js/settings/settings.js"
 
 ];
 

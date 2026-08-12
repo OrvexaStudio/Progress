@@ -297,3 +297,21 @@
         grid-template-columns: 1fr;
     }
 }
+
+.streak-number {
+
+    font-size: 42px;
+    font-weight: 800;
+    margin: 15px 0;
+
+}
+
+
+.streak-number span {
+
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    opacity: .7;
+
+}

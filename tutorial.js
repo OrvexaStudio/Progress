@@ -26,7 +26,10 @@ function renderTutorialStep(){
             >
 
 
-            <div id="tutorial-content"></div>
+            <div 
+    id="tutorial-content"
+    class="tutorial-content"
+></div>
 
 
         </div>

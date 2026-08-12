@@ -604,13 +604,13 @@ function renderStreakCard(){
     else if(streak.current < 30){
 
         message =
-            "🔥 Stai andando forte! Non fermarti.";
+            "Stai andando forte! Non fermarti.";
 
     }
     else if(streak.current >= 30){
 
         message =
-            "🏆 Incredibile costanza. Hai creato un'abitudine.";
+            "Incredibile costanza. Hai creato un'abitudine.";
 
     }
 
@@ -622,7 +622,7 @@ function renderStreakCard(){
     if(streak.current === streak.record && streak.current > 0){
 
         recordMessage =
-            "⭐ Nuovo record personale!";
+            "Nuovo record personale!";
 
     }
 

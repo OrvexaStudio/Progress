@@ -388,3 +388,45 @@
     line-height: 1.4;
 
 }
+
+.timeline-container {
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+}
+
+
+.timeline-item {
+
+    position:relative;
+
+}
+
+
+.timeline-date {
+
+    font-size:13px;
+
+    opacity:.6;
+
+    margin-bottom:8px;
+
+}
+
+
+.timeline-item h3 {
+
+    margin:0 0 8px;
+
+}
+
+
+.timeline-item p {
+
+    margin:0;
+
+    opacity:.75;
+
+}

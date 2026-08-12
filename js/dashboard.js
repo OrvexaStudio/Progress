@@ -701,15 +701,7 @@ ${
 }
 
         </div>
-${
-    recordMessage
-    ?
-    `
-   
-    `
-    :
-    ""
-}
+
 
 
 <small class="streak-info">

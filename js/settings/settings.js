@@ -390,13 +390,20 @@ function renderSettingsPage() {
     Versione 1.0.0
 </small>
 
-<span>
+<button
+    class="text-button"
+    onclick="openPrivacyPage()"
+>
     Privacy
-</span>
+</button>
 
-<span>
+
+<button
+    class="text-button"
+    onclick="openTermsPage()"
+>
     Termini di utilizzo
-</span>
+</button>
 
             </section>
 

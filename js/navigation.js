@@ -102,7 +102,13 @@ if (page === "activity") {
     return;
 
 }
+if (page === "timeline") {
 
+    renderTimelinePage();
+
+    return;
+
+}
     content.innerHTML = `
 
         <div class="page placeholder-page">
@@ -138,6 +144,7 @@ function getPageIcon(page) {
         savings: "€",
         activity: "↗",
         settings: "⚙"
+        timeline: "◷"
     };
 
 

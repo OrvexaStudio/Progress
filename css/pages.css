@@ -3199,3 +3199,94 @@ translateY(0);
     line-height:1.7;
 
 }
+
+.update-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:var(--bg);
+
+}
+
+
+.update-card{
+
+    width:100%;
+
+    max-width:420px;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    background:var(--surface);
+
+    text-align:center;
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.15);
+
+}
+
+
+.update-icon{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+
+}
+
+
+.update-card h1{
+
+    margin:15px 0;
+
+    font-size:26px;
+
+}
+
+
+.update-card p{
+
+    color:var(--text-secondary);
+
+    line-height:1.6;
+
+}
+
+
+.update-list{
+
+    margin:25px 0;
+
+    text-align:left;
+
+}
+
+
+.update-list div{
+
+    padding:12px;
+
+    margin-bottom:8px;
+
+    border-radius:12px;
+
+    background:var(--surface-soft);
+
+    font-size:13px;
+
+}

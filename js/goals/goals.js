@@ -405,9 +405,36 @@ function saveGoal(event, goalId) {
 
 
     saveData(data);
+
+
     localStorage.removeItem(
-    "tutorial_goal_title"
-);
+        "tutorial_goal_title"
+    );
+
+
+    if(
+        localStorage.getItem(
+            "progress_tutorial_goal"
+        )
+    ){
+
+        localStorage.removeItem(
+            "progress_tutorial_goal"
+        );
+
+
+        closeGoalModal();
+
+
+        tutorialStep = 2;
+
+        renderTutorialStep();
+
+
+        return;
+
+    }
+
 
     closeGoalModal();
 

@@ -576,8 +576,7 @@ window.addEventListener(
 
 function renderStreakCard(){
 
-    const streak =
-        calculateStreak();
+    const streak = calculateStreak();
 
 
     let message = "";
@@ -585,134 +584,136 @@ function renderStreakCard(){
 
     if(streak.current === 0){
 
-        message =
-            "Inizia oggi il tuo percorso.";
+        message = "Inizia oggi il tuo percorso.";
 
     }
     else if(streak.current < 3){
 
-        message =
-            "Ottimo inizio, continua così!";
+        message = "Ottimo inizio, continua così!";
 
     }
     else if(streak.current < 7){
 
-        message =
-            "Stai costruendo una bella abitudine.";
+        message = "Stai costruendo una bella abitudine.";
 
     }
     else if(streak.current < 30){
 
-        message =
-            "Stai andando forte! Non fermarti.";
+        message = "Stai andando forte! Non fermarti.";
 
     }
-    else if(streak.current >= 30){
+    else {
 
-        message =
-            "Incredibile costanza. Hai creato un'abitudine.";
+        message = "Incredibile costanza. Hai creato un'abitudine.";
 
     }
 
 
 
-    let recordMessage = "";
-
-
-    if(streak.current === streak.record && streak.current > 0){
-
-        recordMessage =
-            "Nuovo record personale!";
-
-    }
+    const isRecord =
+        streak.current > 0 &&
+        streak.current === streak.record;
 
 
 
-   return `
+    return `
 
-<article class="card streak-card">
+    <article class="card streak-card">
 
 
-    <div class="card-header">
+        <div class="card-header">
 
-        <div>
+            <div>
 
-            <div class="card-title">
-                Streak
-            </div>
+                <div class="card-title">
+                    Streak
+                </div>
 
-            <div class="card-subtitle">
-                La tua costanza quotidiana
+                <div class="card-subtitle">
+                    La tua costanza quotidiana
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
 
-    <div class="streak-status">
-
-        <p class="streak-message">
-            ${message}
-        </p>
-
-    </div>
+        <div class="streak-main">
 
 
-    <div class="streak-number">
+            <div class="streak-value">
 
-        ${streak.current}
+                ${streak.current}
 
-        <span>
+                <span>
+                    ${
+                        streak.current === 1
+                        ? "giorno consecutivo"
+                        : "giorni consecutivi"
+                    }
+                </span>
+
+            </div>
+
+
+            <p class="streak-message">
+                ${message}
+            </p>
+
+
+        </div>
+
+
+
+
+        <div class="streak-footer">
+
+
+            <div class="streak-record">
+
+                Record personale:
+
+                <strong>
+                    ${streak.record}
+                </strong>
+
+                ${
+                    streak.record === 1
+                    ? "giorno"
+                    : "giorni"
+                }
+
+            </div>
+
+
+
             ${
-                streak.current === 1
-                ? "giorno consecutivo"
-                : "giorni consecutivi"
+                isRecord
+                ?
+                `
+                <div class="streak-new-record">
+                    Nuovo record personale!
+                </div>
+                `
+                :
+                ""
             }
-        </span>
-
-    </div>
 
 
-    <div class="streak-record">
 
-        Record personale:
+            <small class="streak-info">
 
-        <strong>
-            ${streak.record}
-        </strong>
+                La streak aumenta quando completi almeno un'attività nella giornata.
 
-        ${
-            streak.record === 1
-            ? "giorno"
-            : "giorni"
-        }
-
-    </div>
+            </small>
 
 
-    ${
-        recordMessage
-        ?
-        `
-        <div class="streak-badge">
-            ${recordMessage}
         </div>
-        `
-        :
-        ""
-    }
 
 
-    <small class="streak-info">
+    </article>
 
-        La streak aumenta quando completi almeno un'attività nella giornata.
+    `;
 
-    </small>
-
-
-</article>
-
-`;
-    
 }

@@ -4,7 +4,7 @@ const pageTitles = {
     savings: "Risparmi",
     activity: "Attività",
     settings: "Impostazioni",
-    timeline: renderTimelinePage,
+    timeline: renderTimelinePage
 };
 
 

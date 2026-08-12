@@ -669,11 +669,7 @@ function renderStreakCard(){
             ${message}
 
         </p>
-<small class="streak-info">
 
-    La streak aumenta quando completi almeno un'attività nella giornata.
-
-</small>
 
 
         <div class="streak-record">
@@ -685,7 +681,11 @@ function renderStreakCard(){
             giorni
 
         </div>
+<small class="streak-info">
 
+    La streak aumenta quando completi almeno un'attività nella giornata.
+
+</small>
 
 
         ${

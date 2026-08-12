@@ -2875,3 +2875,31 @@ translateY(0);
 .tutorial-card .primary-button {
     margin-top: 20px;
 }
+
+.tutorial-card #tutorial-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+.tutorial-card #tutorial-content h1 {
+    margin: 0;
+    line-height: 1.3;
+}
+
+
+.tutorial-card #tutorial-content p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+
+.tutorial-card #tutorial-content .eyebrow {
+    margin: 0;
+}
+
+
+.tutorial-card #tutorial-content .primary-button {
+    margin-top: 10px;
+}

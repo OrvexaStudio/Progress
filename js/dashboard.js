@@ -6,11 +6,20 @@ function renderDashboard() {
         document.querySelector("#app-content");
 
 
+    if (!content) return;
+
+
     const mainGoal =
-        data.goals[0];
+        data.goals && data.goals.length > 0
+            ? data.goals[0]
+            : null;
+
 
     const mainSavings =
-        data.savings[0];
+        data.savings && data.savings.length > 0
+            ? data.savings[0]
+            : null;
+
 
 
     content.innerHTML = `
@@ -19,17 +28,91 @@ function renderDashboard() {
 
             <div class="dashboard-grid">
 
-                ${renderGoalCard(mainGoal)}
 
-                ${renderSavingsCard(mainSavings)}
+                ${
+                    mainGoal
+                    ?
+                    renderGoalCard(mainGoal)
+                    :
+                    renderEmptyGoalCard()
+                }
 
-                ${renderActivityCard(data.activities)}
+
+                ${
+                    mainSavings
+                    ?
+                    renderSavingsCard(mainSavings)
+                    :
+                    renderEmptySavingsCard()
+                }
+
+
+                ${renderActivityCard(data.activities || [])}
+
 
             </div>
 
         </div>
 
     `;
+}
+
+function renderEmptyGoalCard(){
+
+    return `
+
+    <div class="card empty-card">
+
+        <span class="eyebrow">
+            OBIETTIVI
+        </span>
+
+
+        <h3>
+            Nessun obiettivo
+        </h3>
+
+
+        <p>
+            Crea il tuo primo obiettivo
+            per iniziare il percorso.
+        </p>
+
+
+    </div>
+
+    `;
+
+}
+
+
+
+function renderEmptySavingsCard(){
+
+    return `
+
+    <div class="card empty-card">
+
+        <span class="eyebrow">
+            RISPARMI
+        </span>
+
+
+        <h3>
+            Nessun piano
+        </h3>
+
+
+        <p>
+            Imposta un obiettivo economico
+            e monitora i tuoi progressi.
+        </p>
+
+
+    </div>
+
+    `;
+
 }
 
 

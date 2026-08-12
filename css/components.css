@@ -323,6 +323,13 @@
 }
 
 
+.streak-card .card-header {
+
+    text-align: left;
+
+}
+
+
 .streak-number {
 
     font-size: 48px;

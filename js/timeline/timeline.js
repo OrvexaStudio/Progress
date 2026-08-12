@@ -1,5 +1,5 @@
 function renderTimelinePage(){
-
+console.log("TIMELINE APERTA");
     const content =
         document.querySelector(
             "#app-content"

@@ -83,57 +83,42 @@ function renderTutorialStep(){
 
 
 
+if(tutorialStep === 1){
 
-    if(tutorialStep === 1){
+    content.innerHTML = `
 
-        content.innerHTML = `
-
-
-            <span class="eyebrow tutorial-fade">
-                PRIMO PASSO
-            </span>
+        <span class="eyebrow tutorial-fade">
+            PRIMO PASSO
+        </span>
 
 
-            <h1 class="tutorial-fade tutorial-delay-1">
-                Crea il tuo primo obiettivo
-            </h1>
+        <h1 class="tutorial-fade tutorial-delay-1">
+            Crea il tuo primo obiettivo
+        </h1>
 
 
-            <p class="tutorial-fade tutorial-delay-2">
-                Un obiettivo ti aiuta a trasformare
-                un'idea in un percorso concreto.
-            </p>
+        <p class="tutorial-fade tutorial-delay-2">
+            Imposta un obiettivo personale.
+            Sarà il primo passo del tuo percorso.
+        </p>
 
 
-            <input
-                id="tutorial-goal-title"
-                class="
-                    input
-                    tutorial-fade
-                    tutorial-delay-3
-                "
-                type="text"
-                placeholder="Inserisci il tuo obiettivo"
-                maxlength="60"
-            >
+        <button
+            class="
+                primary-button
+                full-width
+                tutorial-fade
+                tutorial-delay-3
+            "
+            onclick="openTutorialGoalForm()"
+        >
+            Crea obiettivo
+        </button>
 
 
-            <button
-                class="
-                    primary-button
-                    full-width
-                    tutorial-fade
-                    tutorial-delay-4
-                "
-                onclick="createTutorialGoal()"
-            >
-                Crea obiettivo
-            </button>
+    `;
 
-
-        `;
-
-    }
+}
 
 
 
@@ -241,7 +226,17 @@ function nextTutorialStep(){
 
 }
 
+function openTutorialGoalForm(){
 
+    localStorage.setItem(
+        "progress_tutorial_goal",
+        "true"
+    );
+
+
+    openGoalModal();
+
+}
 
 
 

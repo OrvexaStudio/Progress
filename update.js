@@ -54,9 +54,9 @@ function showUpdateScreen(){
         <div class="update-card">
 
 
-            <div class="update-icon">
-                🚀
-            </div>
+            <div class="update-logo">
+    <img src="logo.png" alt="Progress">
+</div>
 
 
             <span class="eyebrow">

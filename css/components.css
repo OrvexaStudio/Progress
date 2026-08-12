@@ -368,3 +368,13 @@
     font-weight: 600;
 
 }
+
+.streak-info {
+
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    opacity: .55;
+    line-height: 1.4;
+
+}

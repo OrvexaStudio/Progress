@@ -52,13 +52,13 @@ function renderTimelinePage(){
 
             ?
 
-            timeline
-            .sort(
-                (a,b)=>
-                new Date(b.date)
-                -
-                new Date(a.date)
-            )
+            [...timeline]
+.sort(
+    (a,b)=>
+    new Date(b.date)
+    -
+    new Date(a.date)
+)
             .map(
                 renderTimelineItem
             )
@@ -202,3 +202,22 @@ console.log("ADD TIMELINE CHIAMATA:", event);
 
 
 }
+window.addEventListener(
+    "dataUpdated",
+    () => {
+
+        const title =
+            document.querySelector("#page-title");
+
+
+        if(
+            title &&
+            title.textContent === "Timeline"
+        ){
+
+            renderTimelinePage();
+
+        }
+
+    }
+);

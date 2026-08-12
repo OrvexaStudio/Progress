@@ -25,35 +25,35 @@ function renderDashboard() {
     content.innerHTML = `
 
         <div class="page">
-
-            <div class="dashboard-grid">
-
-
-                ${
-                    mainGoal
-                    ?
-                    renderGoalCard(
-    mainGoal,
-    data.activities || []
-)
-                    :
-                    renderEmptyGoalCard()
-                }
+        
+<div class="dashboard-grid">
 
 
-                ${
-                    mainSavings
-                    ?
-                    renderSavingsCard(mainSavings)
-                    :
-                    renderEmptySavingsCard()
-                }
+    ${renderStreakCard()}
 
 
-                ${renderActivityCard(data.activities || [])}
-                ${renderStreakCard()}
+    ${
+        mainGoal
+        ?
+        renderGoalCard(mainGoal)
+        :
+        renderEmptyGoalCard()
+    }
 
-            </div>
+
+    ${
+        mainSavings
+        ?
+        renderSavingsCard(mainSavings)
+        :
+        renderEmptySavingsCard()
+    }
+
+
+    ${renderActivityCard(data.activities || [])}
+
+
+</div>
 
         </div>
 

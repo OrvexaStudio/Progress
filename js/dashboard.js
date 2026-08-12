@@ -32,7 +32,10 @@ function renderDashboard() {
                 ${
                     mainGoal
                     ?
-                    renderGoalCard(mainGoal)
+                    renderGoalCard(
+    mainGoal,
+    data.activities || []
+)
                     :
                     renderEmptyGoalCard()
                 }
@@ -116,8 +119,9 @@ function renderEmptySavingsCard(){
 }
 
 
-function renderGoalCard(goal) {
-
+function renderGoalCard(goal, activities) {
+const improvement =
+    calculateImprovement(activities);
     if (!goal) {
 
         return `
@@ -181,32 +185,57 @@ function renderGoalCard(goal) {
             </div>
 
 
-            <div class="stats-grid">
+<div class="stats-grid">
 
-                <div class="stat">
+    <div class="stat">
 
-                    <div class="stat-value">
-                        ${goal.hours}h
-                    </div>
+        <div class="stat-value">
+            ${goal.hours}h
+        </div>
 
-                    <div class="stat-label">
-                        Ore dedicate
-                    </div>
+        <div class="stat-label">
+            Ore dedicate
+        </div>
 
-                </div>
+    </div>
 
 
-                <div class="stat">
+    <div class="stat">
 
-                    <div class="stat-value">
-                        ${Array.isArray(goal.milestones) ? goal.milestones.length : 0}
-                    </div>
+        <div class="stat-value">
+            ${Array.isArray(goal.milestones) ? goal.milestones.length : 0}
+        </div>
 
-                    <div class="stat-label">
-                        Milestone
-                    </div>
+        <div class="stat-label">
+            Milestone
+        </div>
 
-                </div>
+    </div>
+
+
+<div class="stat">
+
+    <div class="stat-value">
+
+        ${
+            improvement === null
+            ?
+            "—"
+            :
+            (improvement > 0 ? "+" : "")
+            + improvement + "%"
+        }
+
+    </div>
+
+    <div class="stat-label">
+        Miglioramento
+    </div>
+
+</div>
+
+
+</div>
 
 
 

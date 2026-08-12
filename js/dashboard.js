@@ -209,36 +209,7 @@ function renderGoalCard(goal) {
                 </div>
 
 
-<div class="activity-stat">
 
-    <strong>
-        ${
-            improvement === null
-            ?
-            "—"
-            :
-            (improvement > 0 ? "+" : "")
-            + improvement + "%"
-        }
-    </strong>
-
-
-    <span>
-        Miglioramento
-    </span>
-
-
-    <small>
-        ${
-            improvement === null
-            ?
-            "Inizia il tuo percorso"
-            :
-            "Rispetto alla settimana precedente"
-        }
-    </small>
-
-</div>
 
         </article>
 
@@ -471,7 +442,36 @@ const improvement =
                 </div>
 
             </div>
+<div class="activity-stat">
 
+    <strong>
+        ${
+            improvement === null
+            ?
+            "—"
+            :
+            (improvement > 0 ? "+" : "")
+            + improvement + "%"
+        }
+    </strong>
+
+
+    <span>
+        Miglioramento
+    </span>
+
+
+    <small>
+        ${
+            improvement === null
+            ?
+            "Inizia il tuo percorso"
+            :
+            "Rispetto alla settimana precedente"
+        }
+    </small>
+
+</div>
 
             <div class="activity-list">
 

@@ -373,35 +373,49 @@ function saveGoal(event, goalId) {
         goal.icon = icon;
         goal.deadline = deadline;
 
-    } else {
+} else {
 
-        data.goals.push({
+    const newGoal = {
 
-            id:
-                crypto.randomUUID(),
+        id:
+            crypto.randomUUID(),
 
-            title,
+        title,
 
-            description,
+        description,
 
-            icon,
+        icon,
 
-            deadline,
+        deadline,
 
-            progress: 0,
+        progress: 0,
 
-            hours: 0,
+        hours: 0,
 
-            milestones: [],
+        milestones: [],
 
-            activities: [],
+        activities: [],
 
-            createdAt:
-                new Date().toISOString()
+        createdAt:
+            new Date().toISOString()
 
-        });
+    };
 
-    }
+
+    data.goals.push(newGoal);
+
+
+    addTimelineEvent({
+
+        type: "goal",
+
+        title: "Nuovo obiettivo creato",
+
+        description: title
+
+    });
+
+}
 
 
     saveData(data);

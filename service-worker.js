@@ -1,4 +1,4 @@
-const CACHE_NAME = "progressi-1.1.0";
+const CACHE_NAME = "progressi-1.1.1";
 
 const FILES_TO_CACHE = [
 

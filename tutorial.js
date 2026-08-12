@@ -145,10 +145,19 @@ if(tutorialStep === 2){
 
 
             <p>
-                Il tuo percorso è iniziato.
-                Ogni progresso, anche piccolo,
-                ti avvicina al tuo obiettivo.
-            </p>
+    Il tuo percorso è iniziato.
+</p>
+
+<p>
+    Ogni progresso, anche piccolo,
+    ti avvicina al tuo obiettivo.
+</p>
+
+<p>
+    Ogni grande risultato nasce da un primo passo.
+    Ti auguriamo di raggiungere il tuo obiettivo
+    e di vedere crescere ogni giorno il tuo percorso.
+</p>
 
 
         </div>

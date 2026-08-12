@@ -68,24 +68,9 @@ event => {
         caches.open(CACHE_NAME)
         .then(cache => {
 
-            for (const file of FILES_TO_CACHE) {
-
-    try {
-
-        await cache.add(file);
-
-    }
-
-    catch(error) {
-
-        console.warn(
-            "File non trovato nella cache:",
-            file
-        );
-
-    }
-
-}
+ return cache.addAll(
+    FILES_TO_CACHE
+);
 
         })
 

@@ -12,7 +12,7 @@ console.log("TIMELINE APERTA");
 
     const timeline =
         data.timeline || [];
-
+console.log("EVENTI TIMELINE:", timeline);
 
 
     content.innerHTML = `

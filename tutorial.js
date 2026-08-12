@@ -127,56 +127,140 @@ if(tutorialStep === 1){
 
 
 
-    if(tutorialStep === 2){
+if(tutorialStep === 2){
 
-        content.innerHTML = `
+    content.innerHTML = `
 
-
-            <div class="tutorial-success tutorial-fade">
-
-
-                <div class="success-icon">
-                    ✓
-                </div>
+        <div class="tutorial-success tutorial-fade">
 
 
-                <h1>
-                    Obiettivo creato
-                </h1>
+            <div class="success-icon">
+                ✓
+            </div>
 
 
-                <p>
-                    Il tuo primo obiettivo è stato
-                    aggiunto al tuo percorso.
-                </p>
+            <h1>
+                Obiettivo creato
+            </h1>
 
+
+            <p>
+                Il tuo percorso è iniziato.
+                Ogni progresso, anche piccolo,
+                ti avvicina al tuo obiettivo.
+            </p>
+
+
+        </div>
+
+
+        <button
+            class="
+                primary-button
+                full-width
+                tutorial-fade
+                tutorial-delay-2
+            "
+            onclick="nextTutorialStep()"
+        >
+            Continua
+        </button>
+
+    `;
+
+}
+
+
+
+if(tutorialStep === 3){
+
+    content.innerHTML = `
+
+        <span class="eyebrow tutorial-fade">
+            COME FUNZIONA
+        </span>
+
+
+        <h1 class="tutorial-fade tutorial-delay-1">
+            Il tuo spazio personale
+        </h1>
+
+
+        <p class="tutorial-fade tutorial-delay-2">
+            Gestisci i tuoi obiettivi,
+            monitora le tue attività
+            e segui i tuoi progressi
+            giorno dopo giorno.
+        </p>
+
+
+        <div class="tutorial-info-list tutorial-fade tutorial-delay-3">
+
+
+            <div class="tutorial-info-item">
+
+                <strong>
+                    Obiettivi
+                </strong>
+
+                <span>
+                    Crea traguardi e monitora
+                    la tua crescita.
+                </span>
 
             </div>
 
 
 
-            <button
-                class="
-                    primary-button
-                    full-width
-                    tutorial-fade
-                    tutorial-delay-2
-                "
-                onclick="nextTutorialStep()"
-            >
-                Continua
-            </button>
+            <div class="tutorial-info-item">
 
+                <strong>
+                    Attività
+                </strong>
 
-        `;
+                <span>
+                    Registra quello che fai
+                    e tieni traccia dei miglioramenti.
+                </span>
 
-    }
+            </div>
 
 
 
+            <div class="tutorial-info-item">
+
+                <strong>
+                    Risparmi
+                </strong>
+
+                <span>
+                    Pianifica obiettivi economici
+                    e controlla i progressi.
+                </span>
+
+            </div>
 
 
-    if(tutorialStep === 3){
+        </div>
+
+
+        <button
+            class="
+                primary-button
+                full-width
+                tutorial-fade
+                tutorial-delay-4
+            "
+            onclick="nextTutorialStep()"
+        >
+            Continua
+        </button>
+
+    `;
+
+}
+
+    if(tutorialStep === 4){
 
         content.innerHTML = `
 

@@ -444,7 +444,6 @@ function saveSavingsGoal(event) {
 
     }
 
-
     data.savings.push({
 
         id:
@@ -457,7 +456,6 @@ function saveSavingsGoal(event) {
         target,
 
         saved:
-
             Math.min(
                 saved,
                 target
@@ -476,6 +474,19 @@ function saveSavingsGoal(event) {
 
 
     saveData(data);
+
+
+    addTimelineEvent({
+
+        type: "savings",
+
+        title: "Nuovo obiettivo di risparmio",
+
+        description:
+            `${title} · Obiettivo ${formatCurrency(target)}`
+
+    });
+
 
     closeSavingsModal();
 

@@ -416,15 +416,10 @@ if (goalId) {
         description: title
 
     });
-data.goals.push(newGoal);
 
-addTimelineEvent({
-    type: "goal",
-    title: "Nuovo obiettivo creato",
-    description: title
-});
 
-addXP(20);
+    addXP(20);
+
 }
 
 

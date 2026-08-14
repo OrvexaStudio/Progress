@@ -32,6 +32,9 @@ function renderDashboard() {
     ${renderStreakCard()}
 
 
+    ${renderLevelCard()}
+
+
     ${
         mainGoal
         ?
@@ -58,6 +61,93 @@ function renderDashboard() {
         </div>
 
     `;
+}
+
+function renderLevelCard() {
+
+    const data = loadData();
+
+    const levelData =
+        getLevelData(data.xp || 0);
+
+
+    return `
+
+        <article class="card level-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Livello ${levelData.level}
+                    </div>
+
+                    <div class="card-subtitle">
+                        Il tuo percorso continua
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="level-main">
+
+                <div class="level-number">
+                    ${levelData.level}
+                </div>
+
+
+                <div class="level-info">
+
+                    <strong>
+                        ${levelData.xp} XP
+                    </strong>
+
+                    <span>
+                        ${levelData.remaining} XP al prossimo livello
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="progress-wrapper">
+
+                <div class="progress-info">
+
+                    <span>
+                        Progresso livello
+                    </span>
+
+                    <span>
+                        ${levelData.xpInLevel}
+                        /
+                        ${levelData.xpForNextLevel}
+                        XP
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-value"
+                        style="width:${levelData.percentage}%"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+        </article>
+
+    `;
+
 }
 
 function renderEmptyGoalCard(){

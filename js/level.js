@@ -47,3 +47,35 @@ function getLevelData(xp) {
     };
 
 }
+
+function addXP(amount) {
+
+    const data = loadData();
+
+    const oldXP =
+        Number(data.xp) || 0;
+
+    const oldLevel =
+        getLevelData(oldXP).level;
+
+
+    data.xp =
+        oldXP + Math.max(0, Number(amount) || 0);
+
+
+    const newLevel =
+        getLevelData(data.xp).level;
+
+
+    saveData(data);
+
+
+    if (newLevel > oldLevel) {
+
+        console.log(
+            `LEVEL UP! Livello ${newLevel}`
+        );
+
+    }
+
+}

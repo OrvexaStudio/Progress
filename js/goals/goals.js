@@ -359,20 +359,21 @@ function saveGoal(event, goalId) {
 
     if (!title) return;
 
+if (goalId) {
 
-    if (goalId) {
+    const goal =
+        data.goals.find(
+            item => item.id === goalId
+        );
 
-        const goal =
-            data.goals.find(
-                item => item.id === goalId
-            );
+    if (!goal) return;
 
-        if (!goal) return;
+    goal.title = title;
+    goal.description = description;
+    goal.icon = icon;
+    goal.deadline = deadline;
 
-        goal.title = title;
-        goal.description = description;
-        goal.icon = icon;
-        goal.deadline = deadline;
+    saveData(data);
 
 } else {
 
@@ -404,7 +405,7 @@ function saveGoal(event, goalId) {
 
 
     data.goals.push(newGoal);
-console.log("CREAZIONE OBIETTIVO TIMELINE:", title);
+
 
     addTimelineEvent({
 
@@ -419,44 +420,40 @@ console.log("CREAZIONE OBIETTIVO TIMELINE:", title);
 }
 
 
-    saveData(data);
+/* Fine salvataggio */
 
+
+localStorage.removeItem(
+    "tutorial_goal_title"
+);
+
+
+if (
+    localStorage.getItem(
+        "progress_tutorial_goal"
+    )
+) {
 
     localStorage.removeItem(
-        "tutorial_goal_title"
+        "progress_tutorial_goal"
     );
-
-
-    if(
-        localStorage.getItem(
-            "progress_tutorial_goal"
-        )
-    ){
-
-        localStorage.removeItem(
-            "progress_tutorial_goal"
-        );
-
-
-        closeGoalModal();
-
-
-        tutorialStep = 2;
-
-        renderTutorialStep();
-
-
-        return;
-
-    }
-
 
     closeGoalModal();
 
-    renderGoalsPage();
+    tutorialStep = 2;
+
+    renderTutorialStep();
+
+    return;
+
 }
 
 
+closeGoalModal();
+
+renderGoalsPage();
+
+}
 function deleteGoal(goalId) {
 
     const confirmed =

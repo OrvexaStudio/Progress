@@ -1,105 +1,82 @@
-function renderTimelinePage(){
-console.log("TIMELINE APERTA");
+function renderTimelinePage() {
+
     const content =
-        document.querySelector(
-            "#app-content"
-        );
+        document.querySelector("#app-content");
 
+    if (!content) return;
 
-    const data =
-        loadData();
-
+    const data = loadData();
 
     const timeline =
-        data.timeline || [];
-console.log("EVENTI TIMELINE:", timeline);
+        Array.isArray(data.timeline)
+            ? [...data.timeline]
+            : [];
 
+    timeline.sort(
+        (a, b) =>
+            new Date(b.date) -
+            new Date(a.date)
+    );
 
     content.innerHTML = `
 
+        <div class="page">
 
-    <div class="page">
+            <div class="page-toolbar">
 
+                <div>
 
-        <div class="page-toolbar">
+                    <h2>
+                        Timeline
+                    </h2>
 
+                    <p>
+                        Il tuo percorso e i tuoi progressi.
+                    </p>
 
-            <div>
-
-                <h2>
-                    Timeline
-                </h2>
-
-
-                <p>
-                    Il tuo percorso e i tuoi progressi.
-                </p>
-
+                </div>
 
             </div>
 
+            <div class="timeline-container">
 
-        </div>
+                ${
+                    timeline.length > 0
 
+                    ?
 
+                    timeline
+                        .map(event =>
+                            renderTimelineItem(event)
+                        )
+                        .join("")
 
+                    :
 
-        <div class="timeline-container">
+                    `
+                    <div class="card empty-card">
 
+                        <h3>
+                            Nessun evento ancora
+                        </h3>
 
-        ${
-            timeline.length
+                        <p>
+                            Completa attività e raggiungi
+                            obiettivi per costruire
+                            il tuo percorso.
+                        </p>
 
-            ?
-
-            [...timeline]
-.sort(
-    (a,b)=>
-    new Date(b.date)
-    -
-    new Date(a.date)
-)
-            .map(
-                renderTimelineItem
-            )
-            .join("")
-
-
-            :
-
-            `
-
-            <div class="card empty-card">
-
-                <h3>
-                    Nessun evento ancora
-                </h3>
-
-
-                <p>
-                    Completa attività e raggiungi obiettivi
-                    per costruire il tuo percorso.
-                </p>
+                    </div>
+                    `
+                }
 
             </div>
 
-            `
-
-        }
-
-
         </div>
-
-
-    </div>
-
 
     `;
 
-
 }
-
-
 
 function renderTimelineItem(event){
 

@@ -430,3 +430,47 @@
     opacity:.75;
 
 }
+
+.level-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.level-main {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.level-number {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.level-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.level-info strong {
+    font-size: 20px;
+}
+
+.level-info span {
+    font-size: 13px;
+    opacity: 0.6;
+}

@@ -14,6 +14,7 @@ const defaultData = {
 
     activities: [],
     timeline: []
+    xp: 0,
 };
 
 

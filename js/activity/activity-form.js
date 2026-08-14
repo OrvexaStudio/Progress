@@ -288,12 +288,13 @@ function saveActivity(event) {
         activity
     );
 
+saveData(data);
 
-    saveData(data);
+addXP(10);
 
-    closeActivityModal();
+closeActivityModal();
 
-    renderActivityPage();
+renderActivityPage();
 
 }
 

@@ -54,20 +54,53 @@ data.activities = [];
 
 function saveData(data) {
 
+    const current =
+        localStorage.getItem(STORAGE_KEY);
+
+    if (current) {
+
+        try {
+
+            const existing =
+                JSON.parse(current);
+
+            if (
+                Array.isArray(existing.timeline) &&
+                !Array.isArray(data.timeline)
+            ) {
+
+                data.timeline =
+                    existing.timeline;
+
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Errore nel recupero della timeline:",
+                error
+            );
+
+        }
+
+    }
+
+
     localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(data)
     );
 
 
-    // aggiorna tutta l'app in tempo reale
-    if(
-    !document.querySelector(".tutorial-page")
-){
-    window.dispatchEvent(
-        new Event("dataUpdated")
-    );
-}
+    if (
+        !document.querySelector(".tutorial-page")
+    ) {
+
+        window.dispatchEvent(
+            new Event("dataUpdated")
+        );
+
+    }
 
 }
 

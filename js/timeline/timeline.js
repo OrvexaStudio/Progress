@@ -78,54 +78,36 @@ function renderTimelinePage() {
 
 }
 
-function renderTimelineItem(event){
-
+function renderTimelineItem(event) {
 
     const date =
         new Date(event.date)
-        .toLocaleDateString(
-            "it-IT",
-            {
-                day:"numeric",
-                month:"long",
-                year:"numeric"
-            }
-        );
-
-
+            .toLocaleDateString(
+                "it-IT",
+                {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
 
     return `
 
+        <article class="card timeline-item">
 
-    <article class="card timeline-item">
+            <div class="timeline-date">
+                ${date}
+            </div>
 
+            <h3>
+                ${escapeHTML(event.title || "")}
+            </h3>
 
-        <div class="timeline-date">
+            <p>
+                ${escapeHTML(event.description || "")}
+            </p>
 
-            ${date}
-
-        </div>
-
-
-
-        <h3>
-
-            ${escapeHTML(event.title)}
-
-        </h3>
-
-
-
-        <p>
-
-            ${escapeHTML(event.description)}
-
-        </p>
-
-
-
-    </article>
-
+        </article>
 
     `;
 

@@ -156,68 +156,39 @@ function renderTimelineItem(event){
 
 
 
+function addTimelineEvent(event) {
 
-function addTimelineEvent(event){
-console.log("ADD TIMELINE CHIAMATA:", event);
+    console.log("1 - EVENTO RICEVUTO:", event);
 
-    const data =
-        loadData();
+    const data = loadData();
 
+    console.log("2 - TIMELINE PRIMA:", data.timeline);
 
-
-    if(!data.timeline){
-
+    if (!Array.isArray(data.timeline)) {
         data.timeline = [];
-
     }
-
-
 
     data.timeline.push({
 
-        id:
-            Date.now(),
+        id: Date.now(),
 
+        type: event.type || "general",
 
-        type:
-            event.type || "general",
+        title: event.title || "",
 
+        description: event.description || "",
 
-        title:
-            event.title,
-
-
-        description:
-            event.description,
-
-
-        date:
-            new Date().toISOString()
+        date: new Date().toISOString()
 
     });
 
-
+    console.log("3 - TIMELINE DOPO:", data.timeline);
 
     saveData(data);
 
+    console.log(
+        "4 - TIMELINE DOPO SALVATAGGIO:",
+        loadData().timeline
+    );
 
 }
-window.addEventListener(
-    "dataUpdated",
-    () => {
-
-        const title =
-            document.querySelector("#page-title");
-
-
-        if(
-            title &&
-            title.textContent === "Timeline"
-        ){
-
-            renderTimelinePage();
-
-        }
-
-    }
-);

@@ -10,20 +10,31 @@ function openGoalDetails(goalId) {
 
     if (!goal) return;
 
+updateGoalProgress(goal);
 
-    updateGoalProgress(goal);
-    if (
+
+// =========================
+// COMPLETAMENTO OBIETTIVO
+// =========================
+
+if (
     goal.progress >= 100 &&
-    !goal.xpAwarded
+    goal.xpAwarded !== true
 ) {
-
-    addXP(50);
 
     goal.xpAwarded = true;
 
-}
+    // Salviamo il completamento
+    saveData(data);
+
+    // +50 XP per obiettivo completato
+    addXP(50);
+
+} else {
 
     saveData(data);
+
+}
 
 
     const content =

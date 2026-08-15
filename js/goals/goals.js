@@ -419,7 +419,7 @@ if (goalId) {
 
 
     addXP(20);
-
+saveData(data);
 }
 
 

@@ -408,16 +408,6 @@ function toggleMilestone(
         !wasCompleted;
 
 
-    /*
-        XP milestone
-
-        La prima volta che viene completata:
-        +50 XP
-
-        Se viene deselezionata e ricompletata:
-        nessun XP aggiuntivo.
-    */
-
     if (
         !wasCompleted &&
         milestone.completed &&

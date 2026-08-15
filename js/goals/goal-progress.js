@@ -92,7 +92,6 @@ function updateGoalProgress(goal) {
             : 0;
 
 
-    // Obiettivo completato per la prima volta
     if (
         oldProgress < 100 &&
         goal.progress >= 100 &&
@@ -101,18 +100,10 @@ function updateGoalProgress(goal) {
 
         goal.completed = true;
 
-        addXP(200);
-
-        addTimelineEvent({
-
-            type: "goal_completed",
-
-            title: "Obiettivo completato",
-
-            description:
-                `${goal.title} · Obiettivo raggiunto`
-
-        });
+        console.log(
+            "OBIETTIVO COMPLETATO:",
+            goal.title
+        );
 
     }
 

@@ -408,13 +408,25 @@ function toggleMilestone(
         !wasCompleted;
 
 
-    // +50 XP solo quando viene completata
+    /*
+        XP milestone
+
+        La prima volta che viene completata:
+        +50 XP
+
+        Se viene deselezionata e ricompletata:
+        nessun XP aggiuntivo.
+    */
+
     if (
         !wasCompleted &&
-        milestone.completed
+        milestone.completed &&
+        !milestone.xpAwarded
     ) {
 
         addXP(50);
+
+        milestone.xpAwarded = true;
 
     }
 
@@ -424,6 +436,7 @@ function toggleMilestone(
     saveData(data);
 
     openGoalDetails(goalId);
+
 }
 
 function renderGoalActivities(goal) {

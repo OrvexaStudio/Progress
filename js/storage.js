@@ -1,6 +1,4 @@
 const STORAGE_KEY = "progress_app_data";
-
-
 const defaultData = {
 
     tutorialCompleted: false,
@@ -17,7 +15,17 @@ const defaultData = {
 
     timeline: [],
 
-    xp: 0
+    xp: 0,
+
+    xpAwards: {
+
+        goalsCreated: [],
+
+        milestonesCompleted: [],
+
+        goalsCompleted: []
+
+    }
 
 };
 

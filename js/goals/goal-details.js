@@ -384,10 +384,12 @@ function toggleMilestone(
 
     const data = loadData();
 
+
     const goal =
         data.goals.find(
             item => item.id === goalId
         );
+
 
     if (!goal) return;
 
@@ -396,6 +398,7 @@ function toggleMilestone(
         goal.milestones.find(
             item => item.id === milestoneId
         );
+
 
     if (!milestone) return;
 
@@ -411,13 +414,13 @@ function toggleMilestone(
     updateGoalProgress(goal);
 
 
-    // XP quando la milestone viene completata
+    // +50 XP solo quando viene completata
     if (
         !wasCompleted &&
         milestone.completed
     ) {
 
-        addXP(50);
+        addXP(50, data);
 
         addTimelineEvent({
 

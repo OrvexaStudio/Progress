@@ -476,16 +476,20 @@ function saveSavingsGoal(event) {
     saveData(data);
 
 
-    addTimelineEvent({
+saveData(data);
 
-        type: "savings",
+addXP(15);
 
-        title: "Nuovo obiettivo di risparmio",
+addTimelineEvent({
 
-        description:
-            `${title} · Obiettivo ${formatCurrency(target)}`
+    type: "savings",
 
-    });
+    title: "Nuovo obiettivo di risparmio",
+
+    description:
+        `${title} · Obiettivo ${formatCurrency(target)}`
+
+});
 
 
     closeSavingsModal();

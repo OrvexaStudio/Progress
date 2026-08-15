@@ -685,7 +685,18 @@ function addMoneyToGoal(
     if (!goal.deposits) {
         goal.deposits = [];
     }
+goal.saved += actualAmount;
 
+
+// XP per versamento
+if (actualAmount > 0) {
+    addXP(10);
+}
+
+
+if (!goal.deposits) {
+    goal.deposits = [];
+}
 
     goal.deposits.push({
 

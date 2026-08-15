@@ -284,13 +284,14 @@ function saveActivity(event) {
     }
 
 
-    data.activities.push(
-        activity
-    );
+data.activities.push(
+    activity
+);
+
+// XP per attività registrata
+addXP(10);
 
 saveData(data);
-
-addXP(10);
 
 closeActivityModal();
 

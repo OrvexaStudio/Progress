@@ -408,27 +408,36 @@ function toggleMilestone(
         !wasCompleted;
 
 
+    updateGoalProgress(goal);
+
+
+    // XP quando la milestone viene completata
     if (
         !wasCompleted &&
-        milestone.completed &&
-        !milestone.xpAwarded
+        milestone.completed
     ) {
 
         addXP(50);
 
-        milestone.xpAwarded = true;
+        addTimelineEvent({
+
+            type: "milestone",
+
+            title: "Milestone completata",
+
+            description:
+                `${goal.title} · ${milestone.title}`
+
+        });
 
     }
 
-
-    updateGoalProgress(goal);
 
     saveData(data);
 
     openGoalDetails(goalId);
 
 }
-
 function renderGoalActivities(goal) {
 
     const activities =

@@ -339,124 +339,167 @@ function closeGoalModal(event) {
 function saveGoal(event, goalId) {
 
     event.preventDefault();
-    console.log("SAVE GOAL CHIAMATA", goalId);
 
     const data = loadData();
 
 
     const title =
-        document.querySelector("#goal-title").value.trim();
+        document.querySelector(
+            "#goal-title"
+        ).value.trim();
+
 
     const description =
-        document.querySelector("#goal-description").value.trim();
+        document.querySelector(
+            "#goal-description"
+        ).value.trim();
+
 
     const icon =
-        document.querySelector("#goal-icon").value.trim() || "🎯";
+        document.querySelector(
+            "#goal-icon"
+        ).value.trim() || "🎯";
+
 
     const deadline =
-        document.querySelector("#goal-deadline").value;
+        document.querySelector(
+            "#goal-deadline"
+        ).value;
 
 
-    if (!title) return;
+    if (!title) {
+        return;
+    }
 
-if (goalId) {
 
-    const goal =
-        data.goals.find(
-            item => item.id === goalId
-        );
+    // =========================
+    // MODIFICA OBIETTIVO
+    // =========================
 
-    if (!goal) return;
+    if (goalId) {
 
-    goal.title = title;
-    goal.description = description;
-    goal.icon = icon;
-    goal.deadline = deadline;
+        const goal =
+            data.goals.find(
+                item => item.id === goalId
+            );
 
+
+        if (!goal) {
+            return;
+        }
+
+
+        goal.title =
+            title;
+
+        goal.description =
+            description;
+
+        goal.icon =
+            icon;
+
+        goal.deadline =
+            deadline;
+
+
+        saveData(data);
+
+
+        closeGoalModal();
+
+        renderGoalsPage();
+
+        return;
+    }
+
+
+    // =========================
+    // NUOVO OBIETTIVO
+    // =========================
+
+    const newGoal = {
+
+        id:
+            crypto.randomUUID(),
+
+        title,
+
+        description,
+
+        icon,
+
+        deadline,
+
+        progress: 0,
+
+        hours: 0,
+
+        milestones: [],
+
+        activities: [],
+
+        xpAwarded: false,
+
+        createdAt:
+            new Date().toISOString()
+
+    };
+
+
+    data.goals.push(
+        newGoal
+    );
+
+
+    // Prima salviamo l'obiettivo
     saveData(data);
 
-} else {
 
-const newGoal = {
-
-    id:
-        crypto.randomUUID(),
-
-    title,
-
-    description,
-
-    icon,
-
-    deadline,
-
-    progress: 0,
-
-    hours: 0,
-
-    completed: false,
-
-    milestones: [],
-
-    activities: [],
-
-    createdAt:
-        new Date().toISOString()
-
-};
-
-
-    data.goals.push(newGoal);
+    // Poi assegniamo gli XP
+    addXP(20);
 
 
     addTimelineEvent({
 
         type: "goal",
 
-        title: "Nuovo obiettivo creato",
+        title:
+            "Nuovo obiettivo creato",
 
-        description: title
+        description:
+            title
 
     });
 
 
-    addXP(20);
-saveData(data);
-}
-
-
-/* Fine salvataggio */
-
-
-localStorage.removeItem(
-    "tutorial_goal_title"
-);
-
-
-if (
-    localStorage.getItem(
-        "progress_tutorial_goal"
-    )
-) {
-
     localStorage.removeItem(
-        "progress_tutorial_goal"
+        "tutorial_goal_title"
     );
+
+
+    if (
+        localStorage.getItem(
+            "progress_tutorial_goal"
+        )
+    ) {
+
+        localStorage.removeItem(
+            "progress_tutorial_goal"
+        );
+
+        closeGoalModal();
+
+        tutorialStep = 2;
+
+        renderTutorialStep();
+
+        return;
+    }
+
 
     closeGoalModal();
 
-    tutorialStep = 2;
-
-    renderTutorialStep();
-
-    return;
-
-}
-
-
-closeGoalModal();
-
-renderGoalsPage();
+    renderGoalsPage();
 
 }
 function deleteGoal(goalId) {

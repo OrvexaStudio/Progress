@@ -52,40 +52,18 @@ function addXP(amount) {
 
     const data = loadData();
 
-    const oldXP =
-        Number(data.xp) || 0;
+    const oldXP = Number(data.xp) || 0;
 
     const oldLevel =
         getLevelData(oldXP).level;
 
-
-    const xpToAdd =
-        Math.max(
-            0,
-            Number(amount) || 0
-        );
-
-
-    if (xpToAdd <= 0) {
-        return;
-    }
-
-
     data.xp =
-        oldXP + xpToAdd;
-
+        oldXP + Math.max(0, Number(amount) || 0);
 
     const newLevel =
         getLevelData(data.xp).level;
 
-
     saveData(data);
-
-
-    console.log(
-        `+${xpToAdd} XP | Totale: ${data.xp} | Livello: ${newLevel}`
-    );
-
 
     if (newLevel > oldLevel) {
 
@@ -95,4 +73,30 @@ function addXP(amount) {
 
     }
 
+}
+
+
+function ensureXPAwards(data) {
+
+    if (!data.xpAwards) {
+        data.xpAwards = {
+            goalsCreated: [],
+            milestonesCompleted: [],
+            goalsCompleted: []
+        };
+    }
+
+    if (!Array.isArray(data.xpAwards.goalsCreated)) {
+        data.xpAwards.goalsCreated = [];
+    }
+
+    if (!Array.isArray(data.xpAwards.milestonesCompleted)) {
+        data.xpAwards.milestonesCompleted = [];
+    }
+
+    if (!Array.isArray(data.xpAwards.goalsCompleted)) {
+        data.xpAwards.goalsCompleted = [];
+    }
+
+    return data.xpAwards;
 }

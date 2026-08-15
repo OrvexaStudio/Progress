@@ -389,7 +389,6 @@ function toggleMilestone(
             item => item.id === goalId
         );
 
-
     if (!goal) return;
 
 
@@ -398,12 +397,26 @@ function toggleMilestone(
             item => item.id === milestoneId
         );
 
-
     if (!milestone) return;
 
 
+    const wasCompleted =
+        milestone.completed === true;
+
+
     milestone.completed =
-        !milestone.completed;
+        !wasCompleted;
+
+
+    // +50 XP solo quando viene completata
+    if (
+        !wasCompleted &&
+        milestone.completed
+    ) {
+
+        addXP(50);
+
+    }
 
 
     updateGoalProgress(goal);

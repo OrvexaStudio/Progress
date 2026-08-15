@@ -70,6 +70,10 @@ function updateGoalProgress(goal) {
     if (!goal) return;
 
 
+    const oldProgress =
+        Number(goal.progress) || 0;
+
+
     goal.progress =
         calculateGoalProgress(goal);
 
@@ -86,5 +90,30 @@ function updateGoalProgress(goal) {
         Array.isArray(goal.milestones)
             ? goal.milestones.length
             : 0;
+
+
+    // Obiettivo completato per la prima volta
+    if (
+        oldProgress < 100 &&
+        goal.progress >= 100 &&
+        !goal.completed
+    ) {
+
+        goal.completed = true;
+
+        addXP(200);
+
+        addTimelineEvent({
+
+            type: "goal_completed",
+
+            title: "Obiettivo completato",
+
+            description:
+                `${goal.title} · Obiettivo raggiunto`
+
+        });
+
+    }
 
 }

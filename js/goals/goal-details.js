@@ -394,12 +394,21 @@ function toggleMilestone(
 
     const data = loadData();
 
+
     const goal =
         data.goals.find(
             item => item.id === goalId
         );
 
-    if (!goal) return;
+
+    if (!goal) {
+        return;
+    }
+
+
+    if (!Array.isArray(goal.milestones)) {
+        goal.milestones = [];
+    }
 
 
     const milestone =
@@ -407,7 +416,10 @@ function toggleMilestone(
             item => item.id === milestoneId
         );
 
-    if (!milestone) return;
+
+    if (!milestone) {
+        return;
+    }
 
 
     const wasCompleted =
@@ -421,25 +433,36 @@ function toggleMilestone(
     updateGoalProgress(goal);
 
 
-    // XP assegnati una sola volta
-    if (
-        milestone.completed &&
-        !milestone.xpAwarded
-    ) {
+    // =========================
+    // MILESTONE COMPLETATA
+    // =========================
 
-        addXP(10);
+    if (
+        milestone.completed === true &&
+        milestone.xpAwarded !== true
+    ) {
 
         milestone.xpAwarded = true;
 
+
+        // Salviamo PRIMA
+        saveData(data);
+
+
+        // Poi assegniamo XP
+        addXP(10);
+
+    } else {
+
+        saveData(data);
+
     }
-
-
-    saveData(data);
 
 
     openGoalDetails(goalId);
 
 }
+
 function renderGoalActivities(goal) {
 
     const activities =

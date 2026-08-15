@@ -405,21 +405,12 @@ function toggleMilestone(
 
     const data = loadData();
 
-
     const goal =
         data.goals.find(
             item => item.id === goalId
         );
 
-
-    if (!goal) {
-        return;
-    }
-
-
-    if (!Array.isArray(goal.milestones)) {
-        goal.milestones = [];
-    }
+    if (!goal) return;
 
 
     const milestone =
@@ -427,10 +418,7 @@ function toggleMilestone(
             item => item.id === milestoneId
         );
 
-
-    if (!milestone) {
-        return;
-    }
+    if (!milestone) return;
 
 
     const wasCompleted =
@@ -441,34 +429,63 @@ function toggleMilestone(
         !wasCompleted;
 
 
-    updateGoalProgress(goal);
+    ensureXPAwards(data);
 
 
-    // =========================
-    // MILESTONE COMPLETATA
-    // =========================
-
+    // XP solo quando viene completata
     if (
-        milestone.completed === true &&
-        milestone.xpAwarded !== true
+        !wasCompleted &&
+        milestone.completed
     ) {
 
-        milestone.xpAwarded = true;
+        if (
+            !data.xpAwards.milestonesCompleted.includes(
+                milestone.id
+            )
+        ) {
 
+            data.xpAwards.milestonesCompleted.push(
+                milestone.id
+            );
 
-        // Salviamo PRIMA
-        saveData(data);
+            data.xp =
+                (Number(data.xp) || 0) + 10;
 
-
-        // Poi assegniamo XP
-        addXP(10);
-
-    } else {
-
-        saveData(data);
+        }
 
     }
 
+
+    updateGoalProgress(goal);
+
+
+    // Controlliamo se l'obiettivo
+    // è appena arrivato al 100%
+    const goalCompleted =
+        goal.progress >= 100;
+
+
+    if (goalCompleted) {
+
+        if (
+            !data.xpAwards.goalsCompleted.includes(
+                goal.id
+            )
+        ) {
+
+            data.xpAwards.goalsCompleted.push(
+                goal.id
+            );
+
+            data.xp =
+                (Number(data.xp) || 0) + 50;
+
+        }
+
+    }
+
+
+    saveData(data);
 
     openGoalDetails(goalId);
 

@@ -12,6 +12,16 @@ function openGoalDetails(goalId) {
 
 
     updateGoalProgress(goal);
+    if (
+    goal.progress >= 100 &&
+    !goal.xpAwarded
+) {
+
+    addXP(50);
+
+    goal.xpAwarded = true;
+
+}
 
     saveData(data);
 
@@ -384,12 +394,10 @@ function toggleMilestone(
 
     const data = loadData();
 
-
     const goal =
         data.goals.find(
             item => item.id === goalId
         );
-
 
     if (!goal) return;
 
@@ -398,7 +406,6 @@ function toggleMilestone(
         goal.milestones.find(
             item => item.id === milestoneId
         );
-
 
     if (!milestone) return;
 
@@ -414,29 +421,21 @@ function toggleMilestone(
     updateGoalProgress(goal);
 
 
-    // +50 XP solo quando viene completata
+    // XP assegnati una sola volta
     if (
-        !wasCompleted &&
-        milestone.completed
+        milestone.completed &&
+        !milestone.xpAwarded
     ) {
 
-        addXP(50, data);
+        addXP(10);
 
-        addTimelineEvent({
-
-            type: "milestone",
-
-            title: "Milestone completata",
-
-            description:
-                `${goal.title} · ${milestone.title}`
-
-        });
+        milestone.xpAwarded = true;
 
     }
 
 
     saveData(data);
+
 
     openGoalDetails(goalId);
 

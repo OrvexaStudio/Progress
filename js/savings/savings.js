@@ -703,11 +703,13 @@ function addMoneyToGoal(
     });
 
 
-    saveData(data);
+saveData(data);
 
-    closeSavingsModal();
+addXP(10);
 
-    renderSavingsPage();
+closeSavingsModal();
+
+renderSavingsPage();
 
 }
 

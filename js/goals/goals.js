@@ -377,31 +377,33 @@ if (goalId) {
 
 } else {
 
-    const newGoal = {
+const newGoal = {
 
-        id:
-            crypto.randomUUID(),
+    id:
+        crypto.randomUUID(),
 
-        title,
+    title,
 
-        description,
+    description,
 
-        icon,
+    icon,
 
-        deadline,
+    deadline,
 
-        progress: 0,
+    progress: 0,
 
-        hours: 0,
+    hours: 0,
 
-        milestones: [],
+    completed: false,
 
-        activities: [],
+    milestones: [],
 
-        createdAt:
-            new Date().toISOString()
+    activities: [],
 
-    };
+    createdAt:
+        new Date().toISOString()
+
+};
 
 
     data.goals.push(newGoal);

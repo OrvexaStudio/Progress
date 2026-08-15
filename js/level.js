@@ -48,35 +48,43 @@ function getLevelData(xp) {
 
 }
 
-function addXP(amount, data = null) {
+function addXP(amount) {
 
-    const currentData =
-        data || loadData();
+    const data = loadData();
 
     const oldXP =
-        Number(currentData.xp) || 0;
+        Number(data.xp) || 0;
 
     const oldLevel =
         getLevelData(oldXP).level;
 
 
-    currentData.xp =
-        oldXP +
+    const xpToAdd =
         Math.max(
             0,
             Number(amount) || 0
         );
 
 
-    const newLevel =
-        getLevelData(currentData.xp).level;
-
-
-    // Se ci è stato passato un oggetto data,
-    // NON salviamo subito: lo farà il chiamante.
-    if (!data) {
-        saveData(currentData);
+    if (xpToAdd <= 0) {
+        return;
     }
+
+
+    data.xp =
+        oldXP + xpToAdd;
+
+
+    const newLevel =
+        getLevelData(data.xp).level;
+
+
+    saveData(data);
+
+
+    console.log(
+        `+${xpToAdd} XP | Totale: ${data.xp} | Livello: ${newLevel}`
+    );
 
 
     if (newLevel > oldLevel) {
@@ -86,8 +94,5 @@ function addXP(amount, data = null) {
         );
 
     }
-
-
-    return currentData.xp;
 
 }

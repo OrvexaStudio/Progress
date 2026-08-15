@@ -444,24 +444,26 @@ function saveSavingsGoal(event) {
 
     }
 
-    data.savings.push({
+data.savings.push({
 
-        id:
-            crypto.randomUUID(),
+    id:
+        crypto.randomUUID(),
 
-        title,
+    title,
 
-        icon,
+    icon,
 
-        target,
+    target,
 
-        saved:
-            Math.min(
-                saved,
-                target
-            ),
+    saved:
+        Math.min(
+            saved,
+            target
+        ),
 
-        deadline,
+    deadline,
+
+    xpCompleted: false,
 
         createdAt:
             new Date().toISOString(),

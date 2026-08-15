@@ -25,17 +25,21 @@ const defaultData = {
 function loadData() {
 
     const saved =
-        localStorage.getItem(STORAGE_KEY);
+        localStorage.getItem(
+            STORAGE_KEY
+        );
 
 
     if (!saved) {
 
-        const data =
-            structuredClone(defaultData);
+        const initialData =
+            structuredClone(
+                defaultData
+            );
 
-        saveData(data);
+        saveData(initialData);
 
-        return data;
+        return initialData;
 
     }
 
@@ -46,9 +50,15 @@ function loadData() {
             JSON.parse(saved);
 
 
-        // =========================
-        // NORMALIZZAZIONE DATI
-        // =========================
+        // Assicura che tutte
+        // le proprietà principali esistano
+
+        if (!data.profile) {
+            data.profile = {
+                name: ""
+            };
+        }
+
 
         if (!Array.isArray(data.goals)) {
             data.goals = [];
@@ -70,89 +80,27 @@ function loadData() {
         }
 
 
-        if (!data.profile || typeof data.profile !== "object") {
+        if (
+            typeof data.xp !== "number" ||
+            Number.isNaN(data.xp)
+        ) {
 
-            data.profile = {
-                name: ""
-            };
-
-        }
-
-
-        if (typeof data.xp !== "number") {
-
-            data.xp =
-                Number(data.xp) || 0;
+            data.xp = 0;
 
         }
 
 
-        if (typeof data.tutorialCompleted !== "boolean") {
+        if (
+            typeof data.tutorialCompleted !==
+            "boolean"
+        ) {
 
-            data.tutorialCompleted =
-                Boolean(data.tutorialCompleted);
+            data.tutorialCompleted = false;
 
         }
-
-
-        // =========================
-        // NORMALIZZA GLI OBIETTIVI
-        // =========================
-
-        data.goals =
-            data.goals.map(goal => {
-
-                if (!goal || typeof goal !== "object") {
-                    return null;
-                }
-
-
-                if (!Array.isArray(goal.milestones)) {
-                    goal.milestones = [];
-                }
-
-
-                if (!Array.isArray(goal.activities)) {
-                    goal.activities = [];
-                }
-
-
-                if (typeof goal.progress !== "number") {
-                    goal.progress =
-                        Number(goal.progress) || 0;
-                }
-
-
-                if (typeof goal.hours !== "number") {
-                    goal.hours =
-                        Number(goal.hours) || 0;
-                }
-
-
-                if (!goal.id) {
-                    goal.id =
-                        crypto.randomUUID();
-                }
-
-
-                return goal;
-
-            })
-            .filter(Boolean);
-
-
-        // =========================
-        // SALVA I DATI NORMALIZZATI
-        // =========================
-
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(data)
-        );
 
 
         return data;
-
 
     } catch (error) {
 
@@ -162,14 +110,16 @@ function loadData() {
         );
 
 
-        const data =
-            structuredClone(defaultData);
+        const initialData =
+            structuredClone(
+                defaultData
+            );
 
 
-        saveData(data);
+        saveData(initialData);
 
 
-        return data;
+        return initialData;
 
     }
 
@@ -178,48 +128,14 @@ function loadData() {
 
 function saveData(data) {
 
-    if (!data || typeof data !== "object") {
-        return;
-    }
-
-
-    // =========================
-    // GARANTISCI GLI ARRAY
-    // =========================
-
-    if (!Array.isArray(data.goals)) {
-        data.goals = [];
-    }
-
-
-    if (!Array.isArray(data.savings)) {
-        data.savings = [];
-    }
-
-
-    if (!Array.isArray(data.activities)) {
-        data.activities = [];
-    }
-
-
-    if (!Array.isArray(data.timeline)) {
-        data.timeline = [];
-    }
-
-
-    // =========================
-    // SALVATAGGIO
-    // =========================
-
     localStorage.setItem(
+
         STORAGE_KEY,
+
         JSON.stringify(data)
+
     );
 
-
-    // =========================
-    // AGGIORNA L'INTERFACCIA
-    // =========================
 
     if (
         !document.querySelector(
@@ -228,7 +144,9 @@ function saveData(data) {
     ) {
 
         window.dispatchEvent(
-            new Event("dataUpdated")
+            new Event(
+                "dataUpdated"
+            )
         );
 
     }
